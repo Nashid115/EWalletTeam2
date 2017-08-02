@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {ModuleWithProviders} from '@angular/core'
+import { ModuleWithProviders } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 import { LoginComponent } from './views/pages/login/login.component';
 // import { RegisterComponent } from './views/pages/register/register.component';
 import {TopNavComponent} from './views/components/top-nav/top-nav.component'
@@ -19,18 +19,19 @@ import { NotificationComponent } from './views/pages/notification/notification.c
     // { path: '', redirectTo: 'about', pathMatch: 'full' }
     // children: []
   // }
-  {
-          path: '', component: TopNavComponent, children: [
+  // {
+          // path: 'e', component: TopNavComponent, children: [
             // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     // { path: '', redirectTo: 'ewallet', pathMatch: 'full' },
-    { path: 'ewallet', component: EWalletComponent },    
+    // { path: '', component: TopNavComponent},
+    { path: '', component: EWalletComponent },    
     { path: 'addMoney', component: AddMoneyComponent },
     { path: 'requestMoney', component: RequestMoneyComponent },
     { path: 'sendMoney', component: SendMoneyComponent },
     { path: 'notification', component: NotificationComponent }
           ]
-  }
-];
+  // }
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
