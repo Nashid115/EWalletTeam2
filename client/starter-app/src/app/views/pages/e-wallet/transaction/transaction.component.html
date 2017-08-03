@@ -1,33 +1,36 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <table id="tableReport" class="table table-hover table-striped ">
-        <tbody *ngFor="let history of HISTORY">
-          <tr class="media" id="carga_30" data-id="30">
-            
-            <td class="media-left">
-              <h4>{{history.created_at | date : 'mediumDate'}}</h4>
-            </td>
-            
-            <td class="media-body">
-              <div *ngIf="history.transaction_type === 1">
-                <h4 class="media-heading font-yellow text-bold"><strong>From: </strong>{{history.sender_name}}</h4>
-                <span class="label label-success">Credit</span>
-                <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
-                <span><strong>Amount:</strong>{{history.amount}}</span>
-              </div>
+<div class="card">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table id="tableReport" class="table table-hover table-striped ">
+          <tbody *ngFor="let history of History">
+            <tr class="media" id="carga_30" data-id="30">
               
-              <div *ngIf="history.transaction_type === 2">
-                <h4 class="media-heading font-yellow text-bold"><strong>To: </strong>{{history.receiver_name}}</h4>
-                <span class="label label-danger">Debit</span>
-                <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
-                <span><strong>Amount:</strong>{{history.amount}}</span>
-              </div>
-            </td>
+              <td class="media-left">
+                <h4>{{history.transacted_at | date : 'mediumDate'}}</h4>
+              </td>
+              
+              <td class="media-body">
+                <div *ngIf="history.transaction_type === 1">
+                  <h4 class="media-heading font-yellow text-bold" *ngIf="history.reciever_name; else other_content"><strong>From: </strong>{{history.reciever_name}}</h4>
+                  <ng-template #other_content><h4 class="media-heading font-yellow text-bold"><strong>Self</strong></h4></ng-template>
+                  <span class="label label-success">Credit</span>
+                  <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
+                  <span><strong>Amount:</strong>{{history.amount}}</span>
+                </div>
+                
+                <div *ngIf="history.transaction_type === 2">
+                  <h4 class="media-heading font-yellow text-bold"><strong>To: </strong>{{history.reciever_name}}</h4>
+                  <span class="label label-danger">Debit</span>
+                  <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
+                  <span><strong>Amount:</strong>{{history.amount}}</span>
+                </div>
+              </td>
 
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

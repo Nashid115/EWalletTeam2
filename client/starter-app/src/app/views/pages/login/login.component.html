@@ -5,8 +5,8 @@
         <form [formGroup]="loginForm" (ngSubmit)="Login(loginForm)" class="form-signin">
 
 
-            <input type="text" id="inputEmailphone" formControlName="customer_email" class="form-control" placeholder="Email address/Phone no." required>
-            <div *ngIf="loginForm.controls.customer_email.invalid&&loginForm.controls.customer_email.dirty" class="alert alert-danger">Please enter a valid email or phone number!</div>
+            <input type="text" id="inputEmailphone" formControlName="customer_detail" class="form-control" placeholder="Email address/Phone no." required>
+            <div *ngIf="loginForm.controls.customer_detail.invalid&&loginForm.controls.customer_detail.dirty" class="alert alert-danger">Please enter a valid email or phone number!</div>
             <br>
             <input type="password" id="inputPassword" formControlName="customer_password" class="form-control" placeholder="Password" required password>
             <div *ngIf="loginForm.controls.customer_password.invalid&&loginForm.controls.customer_password.dirty" class="alert alert-danger">Please enter a password! </div>

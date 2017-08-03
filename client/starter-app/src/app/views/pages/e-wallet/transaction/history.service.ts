@@ -9,6 +9,8 @@ export class HistoryService {
 
 	headers:any;
 
+  private apiURL = 'http://10.0.1.62:8080/api/transactions/user/'
+
 	constructor(
 			private http : Http
 		) {    this.headers = new Headers
@@ -16,8 +18,8 @@ export class HistoryService {
         'Content-Type': 'application/json'
     });}
 
-    getTransactions() {
-    	return this.http.get('http://10.0.1.62:8080/api/transactions')
+    getTransactions(customer_id) {
+    	return this.http.get(this.apiURL+customer_id)
     		.toPromise()
     		.then(this.extractData)
     		.catch(this.handleError);
@@ -29,6 +31,6 @@ export class HistoryService {
   }
 
   private handleError(error: Response | any) {
-    return error
+    return error;
   } 	
 }
