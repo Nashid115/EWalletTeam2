@@ -38,6 +38,7 @@ validity = true;
   checkUserValid(user: any) {
     if (user.customer_id) {
         this.customerIdService.setUser(user.customer_id);
+        this.customerIdService.setUserName(user.customer_name);
         this.customerIdService.setBalance(user.wallet_amount.wallet_amount);
         this.balanceService.updateBalance(user.wallet_amount.wallet_amount);
         this.router.navigate(['./dashboard']);
