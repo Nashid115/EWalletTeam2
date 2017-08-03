@@ -13,18 +13,26 @@
               
               <td class="media-body">
                 <div *ngIf="history.transaction_type === 1">
-                  <h4 class="media-heading font-yellow text-bold" *ngIf="history.reciever_name; else other_content"><strong>From: </strong>{{history.reciever_name}}</h4>
-                  <ng-template #other_content><h4 class="media-heading font-yellow text-bold"><strong>Self</strong></h4></ng-template>
+                  <h4 class="media-heading font-yellow text-bold"><strong>From: </strong>{{history.reciever_name}}</h4>
+                  <h4 class="media-heading font-yellow text-bold"><strong>Self</strong></h4>
                   <span class="label label-success">Credit</span>
                   <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
                   <span><strong>Amount:</strong>{{history.amount}}</span>
                 </div>
                 
                 <div *ngIf="history.transaction_type === 2">
+                <div *ngIf="history.reciever_name===customer_name; else other_content">
+                  <h4 class="media-heading font-yellow text-bold"><strong>From: </strong>{{history.sender_name}}</h4>
+                  <span class="label label-danger">Credit</span>
+                  <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
+                  <span><strong>Amount:</strong>{{history.amount}}</span>                  
+                </div>
+                <ng-template #other_content>
                   <h4 class="media-heading font-yellow text-bold"><strong>To: </strong>{{history.reciever_name}}</h4>
                   <span class="label label-danger">Debit</span>
                   <span><strong>Transaction ID:</strong> {{history.transaction_id}}, </span>
                   <span><strong>Amount:</strong>{{history.amount}}</span>
+                </ng-template>
                 </div>
               </td>
 

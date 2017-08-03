@@ -12,6 +12,7 @@ export class TransactionComponent implements OnInit {
 
   History : any;
   customer_id = null;
+  customer_name = "";
   show=true;
   len = null;
 
@@ -38,6 +39,7 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit() {
     this.customer_id = this.customerIdService.getUser();
+    this.customer_name = this.customerIdService.getUserName();
     this.loadTransaction();
   }
 
