@@ -7,7 +7,7 @@
             </a>
             <a class="navbar-brand nav-brand">E-Wallet</a>
 
-            <a class=" navbar-brand balance1213"> balance:5000rs</a>
+            <a class=" navbar-brand balance1213">{{balance}}</a>
 
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 
@@ -24,10 +24,10 @@
 
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle username" data-toggle="dropdown" href="#">user name </a>
+                    <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{userName}}</a>
                     <ul class="dropdown-menu">
-                        <li><a>log out</a></li>
-                        <li><a>profile info</a></li>
+                        <li><a routerLink="/login" (ngSubmit)="logout()">log out </a></li>
+                        <!-- <li><a>profile info</a></li> -->
 
                     </ul>
                 </li>

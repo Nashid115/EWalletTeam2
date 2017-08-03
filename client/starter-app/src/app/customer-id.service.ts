@@ -7,10 +7,20 @@ export class CustomerIdService {
 
   userID = null;
   balance = null;
+  userName = "";
 
   setUser(id) {
   	this.userID = id;
   }
+
+  setUserName(name) {
+    this.userName = name;
+  }
+
+  getUserName() {
+    return this.userName;
+  }
+
 
   setBalance(balance) {
   	this.balance = balance;

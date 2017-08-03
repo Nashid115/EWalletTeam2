@@ -20,8 +20,8 @@
             <br>
 
 
-            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password> {{confirmPassword123}}
-            <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password" [(ngModel)]="confirmPassword" required password> {{confirmPassword123}}
+             <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.dirty">Password not match</div> 
             <br>
 
             <button [disabled]=registerForm.invalid class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button><br>
