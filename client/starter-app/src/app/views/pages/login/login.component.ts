@@ -5,9 +5,6 @@ import { LoginService } from './login.service';
 import { CustomerIdService } from '../../../customer-id.service';
 import { BalanceService } from '../../../balance.service';
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +30,10 @@ validity = true;
     this.loginService.postLoginData(form._value)
     .subscribe(data => {
       this.checkUserValid(data);
-    });
+      },
+      error => {
+        this.handleError(error);
+      });
   }
 
   checkUserValid(user: any) {
@@ -46,6 +46,12 @@ validity = true;
       } else {
         this.validity = false;
       }
+  }
+
+  handleError(err) {
+    if(err.status === 404){
+      this.validity = false;
+    }
   }
 
 ngOnInit() {

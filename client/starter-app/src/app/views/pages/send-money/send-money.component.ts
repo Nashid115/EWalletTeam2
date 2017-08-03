@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
 import { SendMoneyService } from './send-money.service';
+import { BalanceService} from '../../../balance.service';
+import { CustomerIdService } from '../../../customer-id.service';
 
 @Component({
   selector: 'app-send-money',
@@ -9,33 +12,68 @@ import { SendMoneyService } from './send-money.service';
   styleUrls: ['./send-money.component.scss']
 })
 export class SendMoneyComponent implements OnInit {
- resposedata={};
+  sendmoneydata:any={};
+ responsedata :any ={};
+ subscription: Subscription; 
+ Balance = null;
+ errormsg:any;
+ success=true;
+ greateramount=true;
+ validity=true;
 public sendForm = this.fb.group({
     emailphone: ["",[ Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$|\\d{10}")]],
     sendamount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
   });
-balance : 25000;
-checkCondition(resposedata){
-  if(this.responsedata.)
 
-}
-  
-  constructor(private _sendMoneyService: SendMoneyService,
-    public router : Router, public fb: FormBuilder) { }
-    
-  send(form) {
-    this.router.navigate(['./']);
+checkCondition(sendmoneydata){
+ 
+  if(sendmoneydata.amount > this.Balance){
+  this.greateramount=false;
+  }
+  else{
+  this.greateramount=true;
+   let obj={
+     "customer_id" : this.customerIdService.getUser(),
+     "reciever" : sendmoneydata.reciever,
+     "amount" : sendmoneydata.amount
+
+    }
+    this.postFunction(obj);
   }
 
-postFunction(sendmoneydata) {
-  this._sendMoneyService.postRegister(sendmoneydata)
-    .subscribe(data => {
-      this.resposedata = JSON.stringify(data);  
-  });
 }
 
+  constructor(private sendMoneyService: SendMoneyService,
+    private balanceService : BalanceService,
+    private customerIdService : CustomerIdService,
+    public router : Router, 
+    public fb: FormBuilder)
+     { this.subscription = this.balanceService.getBalance().subscribe(balance => this.Balance = balance) }
+    
+
+postFunction(obj) {
+  this.sendMoneyService.postRegister(obj)
+    .then(data => {
+    this.wAmount(data);  
+  },
+error =>{
+   this.handleError(error);
+});
+}
+
+wAmount(data) {
+    this.success=false;
+    this.validity=true;
+    this.balanceService.updateBalance(data.wallet_amount);
+}
+handleError(error){
+  if(error.status === 400){
+   this.validity=false;
+  }
+}
 
 ngOnInit() {
+  this.Balance = this.customerIdService.getBalance();
   }
 
 }  
