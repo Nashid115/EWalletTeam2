@@ -7,12 +7,12 @@
                 <B>SEND MONEY</B>
             </p>
             <form [formGroup]="sendForm" (ngSubmit)="send(sendForm)">
-                <input type="text" id="receiver" formControlName="emailphone" class="form-control" placeholder="Email address/Phone no." [(ngModel)]="data.emailphone" required>
+                <input type="text" id="receiver" formControlName="emailphone" class="form-control" placeholder="Email address/Phone no." [(ngModel)]="sendmoneydata.emailphone" required>
                 <div *ngIf="sendForm.controls.emailphone.touched&&sendForm.controls.emailphone.pristine" class="alert alert-danger">Field is required</div>
                 <div *ngIf="sendForm.controls.emailphone.dirty&&sendForm.controls.emailphone.invalid" class="alert alert-danger">Please enter valid email or phone number!</div>
                 <br>
 
-                <input type="text" id="sendamount" class="form-control" formControlName="sendamount" placeholder="Enter amount to be sent" [(ngModel)]="data.amount">
+                <input type="text" id="sendamount" class="form-control" formControlName="sendamount" placeholder="Enter amount to be sent" [(ngModel)]="sendmoneydata.amount">
                 <div *ngIf="sendForm.controls.sendamount.touched&&sendForm.controls.sendamount.pristine" class="alert alert-danger">Field is required</div>
                 <div *ngIf="sendForm.controls.sendamount.dirty&&sendForm.controls.sendamount.invalid" class="alert alert-danger">Please enter amount below 10000!</div>
                 <br>

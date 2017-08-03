@@ -9,24 +9,28 @@ import { SendMoneyService } from './send-money.service';
   styleUrls: ['./send-money.component.scss']
 })
 export class SendMoneyComponent implements OnInit {
- data={};
+ resposedata={};
 public sendForm = this.fb.group({
     emailphone: ["",[ Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$|\\d{10}")]],
     sendamount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
   });
+balance : 25000;
+checkCondition(resposedata){
+  if(this.responsedata.)
 
+}
   
-  constructor(private sendMoneyService: SendMoneyService,
+  constructor(private _sendMoneyService: SendMoneyService,
     public router : Router, public fb: FormBuilder) { }
     
   send(form) {
     this.router.navigate(['./']);
   }
 
-postFunction(data) {
-  this.sendMoneyService.postRegister(data)
+postFunction(sendmoneydata) {
+  this._sendMoneyService.postRegister(sendmoneydata)
     .subscribe(data => {
-      this.data = JSON.stringify(data);  
+      this.resposedata = JSON.stringify(data);  
   });
 }
 
