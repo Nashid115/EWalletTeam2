@@ -12,6 +12,8 @@ export class TransactionComponent implements OnInit {
 
   History : any;
   customer_id = null;
+  show=true;
+  len = null;
 
   constructor(
     private historyService: HistoryService,
@@ -25,6 +27,11 @@ export class TransactionComponent implements OnInit {
 
   reverse(data) {
     this.History = data.reverse();
+    this.len = this.History.length;
+    if(this.len===0){
+      this.show = false;
+    }
+    console.log(this.len);
   }
 
 

@@ -2,9 +2,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div [hidden]="show" class="alert alert-success">You dont have any transactions yet!</div>
         <table id="tableReport" class="table table-hover table-striped ">
           <tbody *ngFor="let history of History">
-            <tr class="media" id="carga_30" data-id="30">
+            <tr class="media" id="carga_30" data-id="30" *ngIf="history.status!==3">
               
               <td class="media-left">
                 <h4>{{history.transacted_at | date : 'mediumDate'}}</h4>
@@ -34,3 +35,4 @@
     </div>
   </div>
 </div>
+
