@@ -8,6 +8,7 @@ export class CustomerIdService {
   userID = null;
   balance = null;
   userName = "";
+  successRegister = false;
 
   setUser(id) {
   	this.userID = id;
@@ -37,5 +38,13 @@ export class CustomerIdService {
   clearUser() {
   	this.userID = null;
   	return;
+  }
+
+  successReg(){
+    this.successRegister = true;
+  }
+
+  isSuccess() {
+    return this.successRegister;
   }
 }

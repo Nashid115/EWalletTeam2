@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { PasswordValidation } from './password-validation';
+import { CustomerIdService } from '../../../customer-id.service';
 
 
 @Component({
@@ -29,10 +30,11 @@ show = true;
     }
   );
 
-  constructor(private _registerService: RegisterService,
-    public router : Router,
+  constructor(
+    public router: Router,
     public fb: FormBuilder,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private CustomerIdService: CustomerIdService
   ) { }
 
     
@@ -40,10 +42,11 @@ show = true;
 postFunction(registerPostData)
 {
 
-  this._registerService.postRegister(registerPostData)
+  this.registerService.postRegister(registerPostData)
     .subscribe(
       data => {
-         this.router.navigate(['./login']);
+        this.CustomerIdService.successReg();
+        this.router.navigate(['./login']);
       },
       err => {
         if(err.status === 400) {

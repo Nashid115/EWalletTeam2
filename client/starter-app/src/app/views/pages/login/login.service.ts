@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
 import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -16,8 +17,8 @@ export class LoginService {
 
   postLoginData(data) {
     return this.http.post(this.serverURL + 'customer/login' , data)
-    .map(res => res.json())
-    .catch(err => "Error");
-  }  }
+    .map((res: Response)  => res.json());
+  }
+}
 
 
