@@ -60,6 +60,7 @@ export class AddMoneyComponent implements OnInit {
   }
 
 ngOnInit() {
+  this.balance = this.customerIdService.getBalance();
   }
 
 }

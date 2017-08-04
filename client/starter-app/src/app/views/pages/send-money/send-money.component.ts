@@ -12,7 +12,7 @@ import { CustomerIdService } from '../../../customer-id.service';
   styleUrls: ['./send-money.component.scss']
 })
 export class SendMoneyComponent implements OnInit {
-  sendmoneydata:any={};
+ sendmoneydata:any={};
  responsedata :any ={};
  subscription: Subscription; 
  Balance = null;
@@ -20,6 +20,8 @@ export class SendMoneyComponent implements OnInit {
  success=true;
  greateramount=true;
  validity=true;
+ cust_name = "";
+
 public sendForm = this.fb.group({
     emailphone: ["",[ Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$|\\d{10}")]],
     sendamount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
@@ -35,9 +37,11 @@ checkCondition(sendmoneydata){
    let obj={
      "customer_id" : this.customerIdService.getUser(),
      "reciever" : sendmoneydata.reciever,
-     "amount" : sendmoneydata.amount
+     "amount" : sendmoneydata.amount,
+     "customer_name" : this.cust_name
 
     }
+    console.log(obj);
     this.postFunction(obj);
   }
 
@@ -74,6 +78,7 @@ handleError(error){
 
 ngOnInit() {
   this.Balance = this.customerIdService.getBalance();
+  this.cust_name = this.customerIdService.getUserName();
   }
 
 }  

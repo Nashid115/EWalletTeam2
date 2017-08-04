@@ -14,11 +14,11 @@
                 <input type="number" id="sendamount" class="form-control" formControlName="sendamount" placeholder="Enter amount to be sent" [(ngModel)]="sendmoneydata.amount">
                 <div *ngIf="sendForm.controls.sendamount.touched&&sendForm.controls.sendamount.pristine" class="alert alert-danger">Field is required</div>
                 <div *ngIf="sendForm.controls.sendamount.dirty&&sendForm.controls.sendamount.invalid" class="alert alert-danger">Please enter amount below 10000!</div>
+                <div [hidden]="success" class="alert alert-success">Amount sent successfully</div>
+                <div [hidden]="validity" class="alert alert-danger">User does not exist</div>
                 <br>
                 <input [disabled]=sendForm.invalid type="submit" name="send" class="sendButton" value="SEND">
                 <div [hidden]="greateramount" class="alert alert-danger">Do not have sufficient amount in wallet to make transaction</div>
-                <div [hidden]="success" class="alert alert-success">Amount sent successfully</div>
-                <div [hidden]="validity" class="alert alert-danger">User does not exist</div>
             </form>
         </div>
     </div>
