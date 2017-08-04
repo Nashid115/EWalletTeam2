@@ -15,6 +15,7 @@ export class TransactionComponent implements OnInit {
   customer_name = "";
   show=true;
   len = null;
+  p: number = 1;
 
   constructor(
     private historyService: HistoryService,

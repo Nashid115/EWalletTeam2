@@ -26,6 +26,7 @@ import { RegisterService } from './views/pages/register/register.service';
 import { LoginService } from './views/pages/login/login.service';
 import { SendMoneyService } from './views/pages/send-money/send-money.service';
 import { CustomerIdService} from './customer-id.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { CustomerIdService} from './customer-id.service';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [
     HistoryService,
