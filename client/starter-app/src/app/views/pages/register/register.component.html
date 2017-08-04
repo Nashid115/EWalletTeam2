@@ -21,7 +21,7 @@
 
 
             <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password> {{confirmPassword123}}
-            <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
+            <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password did not match</div>
             {{confirmPassword123}}
             <br>
 

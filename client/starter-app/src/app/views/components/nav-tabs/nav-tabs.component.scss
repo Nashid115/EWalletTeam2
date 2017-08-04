@@ -2,6 +2,12 @@
     border-bottom: 2px solid #DDD;
 }
 
+.nav-tabs {
+    position: fixed;
+    width: 70%;
+    margin-top: 65px;
+}
+
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
