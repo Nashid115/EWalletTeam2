@@ -8,15 +8,16 @@
 <B>REQUEST FOR MONEY</B></p>
 <form [formGroup]="requestForm" (ngSubmit)="request(requestForm)">
     
-    <input type="text" id="sender" formControlName="emailphone" class="form-control" placeholder="Email address/Phone no." required>
-    <div *ngIf="requestForm.controls.emailphone.invalid&&requestForm.controls.emailphone.dirty" class="alert alert-danger">Please enter valid email or phone number!</div>
+    <input type="text" id="sender" formControlName="requested_from" class="form-control" placeholder="Email address/Phone no." required>
+    <div *ngIf="requestForm.controls.requested_from.invalid&&requestForm.controls.requested_from.dirty" class="alert alert-danger">Please enter valid email or phone number!</div>
     <br>
     
-    <input type="text" id="requestamount" class="form-control" formControlName="requestamount" placeholder="Enter amount to be requested">
-    <div *ngIf="requestForm.controls.requestamount.invalid&&requestForm.controls.requestamount.dirty" class="alert alert-danger">Please enter amount!</div>
+    <input type="number" id="requestamount" class="form-control" formControlName="amount" placeholder="Enter amount to be requested">
+    <div *ngIf="requestForm.controls.amount.invalid&&requestForm.controls.amount.dirty" class="alert alert-danger">Please enter amount!</div>
     <br>
     
     <input [disabled]=requestForm.invalid type="submit" name="request" class="requestButton" value="REQUEST">
+    <div [hidden]="valid" class="alert alert-success">Request sent successfully!</div>
 </form>
 </div>
 </div>

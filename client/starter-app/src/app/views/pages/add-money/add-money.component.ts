@@ -33,13 +33,13 @@ export class AddMoneyComponent implements OnInit {
 
   customer_id = this.customerIdService.getUser();
 
-  add(form) {  
-    if((form._value.wallet_amount+this.balance) > 25000){
+  add(form) {
+    if((form._value.wallet_amount + this.balance) > 25000) {
       this.valid = false;
       this.show = true;
     } else {
-      this.valid=true;
-      this.createObj(form._value.wallet_amount)
+      this.valid = true;
+      this.createObj(form._value.wallet_amount);
     }
   }
 
@@ -62,4 +62,4 @@ export class AddMoneyComponent implements OnInit {
 ngOnInit() {
   }
 
-}  
+}

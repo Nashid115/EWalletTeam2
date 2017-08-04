@@ -11,7 +11,6 @@ import { BalanceService } from '../../../balance.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-responseData : any;
 validity = true;
 
   public loginForm = this.fb.group({
@@ -30,6 +29,7 @@ validity = true;
     this.loginService.postLoginData(form._value)
     .subscribe(data => {
       this.checkUserValid(data);
+      console.log(data,"login")
       },
       error => {
         this.handleError(error);

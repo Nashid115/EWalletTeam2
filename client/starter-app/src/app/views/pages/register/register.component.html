@@ -6,7 +6,7 @@
         <form [formGroup]="registerForm" (ngSubmit)="postFunction(registerPostData)" class="form-register">
             <input type="text" id="inputName" class="form-control" formControlName="name" placeholder="First Name" [(ngModel)]="registerPostData.customer_name" required>
             <div *ngIf="registerForm.controls.name.invalid&&registerForm.controls.name.dirty" class="alert alert-danger">Please enter a name!</div>
-            <br> {{registerPostData.name}}
+            <br>
             <input type="email" id="inputEmail" class="form-control" formControlName="email" placeholder="Email address" [(ngModel)]="registerPostData.customer_email" required email>
             <div *ngIf="registerForm.controls.email.invalid&&registerForm.controls.email.dirty" class="alert alert-danger">Please enter a valid email!</div>
             <br>
@@ -20,14 +20,14 @@
             <br>
 
 
-            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password> {{confirmPassword123}}
+            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password>
             <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password did not match</div>
-            {{confirmPassword123}}
             <br>
 
             <button [disabled]=registerForm.invalid class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button><br>
-            <!-- <div [hidden]="emailphone_exist" class="alert alert-danger">Email OR phonr number already exist please enter a new one</div> -->
-            <p class="login">already registered? <a routerLink="/"><U>Login</U></a></p>
+            <div [hidden]="valid" class="alert alert-danger">Email OR phone number already exist please enter a new one.</div>
+            <div [hidden]="show" class="alert alert-danger">Oops!! Something went wrong!</div>
+            <p class="login">Already registered? <a routerLink="/"><U>Login</U></a></p>
         </form>
         <!-- /form -->
 

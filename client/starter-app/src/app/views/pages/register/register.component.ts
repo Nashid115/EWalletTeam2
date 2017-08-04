@@ -14,6 +14,9 @@ export class RegisterComponent implements OnInit {
   
 registerPostData={};
 
+valid = true;
+show = true;
+
   public registerForm = this.fb.group({
     name: ["", [Validators.required, Validators.pattern("")]],
     email: ["", Validators.required],
@@ -38,17 +41,18 @@ postFunction(registerPostData)
 {
 
   this._registerService.postRegister(registerPostData)
-    .subscribe(data => {
-      this.registerPostData = JSON.stringify(data);
-  
-      if(data.object.status == 200){
-        this.router.navigate(['./login']);
+    .subscribe(
+      data => {
+         this.router.navigate(['./login']);
+      },
+      err => {
+        if(err.status === 400) {
+          this.valid = false;
+        } else {
+          this.show = false;
+        }
       }
-      else {
-        this.router.navigate(['./']);
-      }
-   
-  });
+  );
 }
 
   ngOnInit() {
