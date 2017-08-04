@@ -22,27 +22,29 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle username" data-toggle="dropdown" href="#">{{userName}}</a>
-                    <ul class="dropdown-menu">
-                        <li><a routerLink="/login" (ngSubmit)="logout()">log out </a></li>
-                        <!-- <li><a>profile info</a></li> -->
-
-                    </ul>
-                </li>
-                <li class="dropdown">
+                
+                <!-- <li class="dropdown">
                     <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
                         <li *ngFor="let request of history" >
                             <div *ngIf="request.status===3"><a>{{request.sender_name}} has requested Rs. {{request.amount}}</a></div>
                         </li>
                     </ul>
+                </li> -->
+                <li><a class="username">{{userName}}</a></li>
+                <li><a class="username" routerLink="/login" (ngSubmit)="logout()">Log out</a></li>
+                <!-- <li><a routerLink="#" target="_blank" class="nav-pages"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" *ngFor="let request of history" >
+                        <li *ngIf="request.status===3&&userName===request.sender_name" >
+                            <div>{{request.reciever_name}} has requested Rs. {{request.amount}}</div>
+                        </li>
+                    </ul>
                 </li>
-                <!-- <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li> -->
             </ul>
 
 
         </div>
-      </div>
+    </div>
 </div>

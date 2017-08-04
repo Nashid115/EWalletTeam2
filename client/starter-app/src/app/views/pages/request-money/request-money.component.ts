@@ -55,7 +55,9 @@ public requestForm = this.fb.group({
   requestMoney(value){
     this.requestService.postRequestData(value)
     .subscribe(data => {
+      console.log(data, "in cmp");
       if (data.sender_id){
+        console.log(data.sender_id);
         this.valid = false;
         setTimeout(() => this.valid = true , 3000);
       }

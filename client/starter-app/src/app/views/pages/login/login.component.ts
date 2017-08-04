@@ -29,6 +29,7 @@ validity = true;
     this.loginService.postLoginData(form._value)
     .subscribe(data => {
       this.checkUserValid(data);
+      console.log(data,"login")
       },
       error => {
         this.handleError(error);
