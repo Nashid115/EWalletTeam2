@@ -9,7 +9,7 @@ export class HistoryService {
 
 	headers:any;
 
-  private apiURL = 'http://10.0.1.62:8080/api/transactions/user/'
+  private apiURL = 'http://10.0.1.30:8080/api/transactions/user/'
 
 	constructor(
 			private http : Http

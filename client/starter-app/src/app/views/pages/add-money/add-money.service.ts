@@ -7,7 +7,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class AddMoneyService {
   
-  private serverURL = "http://10.0.1.62:8080/api/customer/wallet";
+  private serverURL = "http://10.0.1.30:8080/api/customer/wallet";
 
   constructor(
   	public http : Http,

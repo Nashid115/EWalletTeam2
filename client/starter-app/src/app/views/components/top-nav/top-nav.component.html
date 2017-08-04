@@ -31,7 +31,14 @@
 
                     </ul>
                 </li>
-                <li><a routerLink="#" target="_blank" class="nav-pages"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let request of history" >
+                            <div *ngIf="request.status===3"><a>{{request.sender_name}} has requested Rs. {{request.amount}}</a></div>
+                        </li>
+                    </ul>
+                </li>
                 <!-- <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li> -->
             </ul>
 

@@ -29,12 +29,12 @@ export class TransactionComponent implements OnInit {
 
   reverse(data) {
     this.History = data.reverse();
-    console.log(this.History);
+    //console.log(this.History);
     this.len = this.History.length;
     if(this.len===0){
       this.show = false;
     }
-    console.log(this.len);
+    //console.log(this.len);
   }
 
 

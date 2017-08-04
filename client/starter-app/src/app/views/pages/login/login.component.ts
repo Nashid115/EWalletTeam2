@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 validity = true;
 
   public loginForm = this.fb.group({
-    customer_detail: ["",[ Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$|\\d{10}")]],
+    customer_detail: ["",[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
     customer_password: ["", Validators.required]
   });
 
@@ -40,11 +40,14 @@ validity = true;
         this.customerIdService.setUser(user.customer_id);
         this.customerIdService.setUserName(user.customer_name);
         this.customerIdService.setBalance(user.wallet_amount.wallet_amount);
+        this.customerIdService.setEmail(user.customer_email);
+        this.customerIdService.setPhone(user.customer_phone_no);
         this.balanceService.updateBalance(user.wallet_amount.wallet_amount);
         this.router.navigate(['./dashboard']);
         this.validity = true;
       } else {
         this.validity = false;
+        setTimeout(() => this.validity = true , 3000);
       }
   }
 

@@ -8,6 +8,8 @@ export class CustomerIdService {
   userID = null;
   balance = null;
   userName = "";
+  userEmail = "";
+  userPhone = "";
 
   setUser(id) {
   	this.userID = id;
@@ -17,13 +19,28 @@ export class CustomerIdService {
     this.userName = name;
   }
 
+  setEmail(email) {
+    this.userEmail = email;
+  }
+
+  setBalance(balance) {
+  	this.balance = balance;
+  }
+
+  setPhone(phone) {
+    this.userPhone = phone;
+  }
+
+  getEmail() {
+    return this.userEmail;
+  }
+
   getUserName() {
     return this.userName;
   }
 
-
-  setBalance(balance) {
-  	this.balance = balance;
+  getPhone() {
+    return this.userPhone;
   }
 
   getBalance(){

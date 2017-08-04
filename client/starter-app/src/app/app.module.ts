@@ -27,6 +27,7 @@ import { LoginService } from './views/pages/login/login.service';
 import { SendMoneyService } from './views/pages/send-money/send-money.service';
 import { CustomerIdService} from './customer-id.service';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { WalletService } from './views/components/side-bar/wallet.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AddMoneyService,
     BalanceService,
     SendMoneyService,
-    CustomerIdService
+    CustomerIdService,
+    WalletService
   ],
  bootstrap: [AppComponent]
 })

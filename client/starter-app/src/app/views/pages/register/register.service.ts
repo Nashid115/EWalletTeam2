@@ -9,7 +9,7 @@ export class RegisterService {
 
   constructor(private _http : Http) { }
 
-  private apiURL = 'http://10.0.1.62:8080/api/customer/add';
+  private apiURL = 'http://10.0.1.30:8080/api/customer/add';
 
    postRegister(registerPostData){
        return this._http.post(this.apiURL, registerPostData)

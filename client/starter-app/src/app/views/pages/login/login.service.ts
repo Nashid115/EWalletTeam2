@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class LoginService {
-  private serverURL = 'http://10.0.1.62:8080/api/';
+  private serverURL = 'http://10.0.1.30:8080/api/';
 
 
   constructor(private http: Http) { }

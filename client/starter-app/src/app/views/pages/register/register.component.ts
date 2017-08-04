@@ -19,8 +19,8 @@ show = true;
 
   public registerForm = this.fb.group({
     name: ["", [Validators.required, Validators.pattern("")]],
-    email: ["", Validators.required],
-    phone: ["", [Validators.required, Validators.pattern("\\d{10}")]],
+    email: ["", [Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")]],
+    phone: ["", [Validators.required, Validators.pattern("^[789]\\d{9}$")]],
     password: ["", [Validators.required, Validators.pattern("(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{8,}")]],
     confirmPassword: ["", [Validators.required]]
 
@@ -48,8 +48,10 @@ postFunction(registerPostData)
       err => {
         if(err.status === 400) {
           this.valid = false;
+          setTimeout(() => this.valid = true , 3000);
         } else {
           this.show = false;
+          setTimeout(() => this.show = true , 3000);
         }
       }
   );

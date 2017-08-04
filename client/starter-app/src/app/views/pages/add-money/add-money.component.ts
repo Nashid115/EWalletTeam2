@@ -36,6 +36,7 @@ export class AddMoneyComponent implements OnInit {
   add(form) {
     if((form._value.wallet_amount + this.balance) > 25000) {
       this.valid = false;
+      setTimeout(() => this.valid = true , 3000);
       this.show = true;
     } else {
       this.valid = true;
@@ -56,8 +57,10 @@ export class AddMoneyComponent implements OnInit {
     .subscribe(data => {
       this.balanceService.updateBalance(data.wallet_amount);
       this.show = false;
+      setTimeout(() => this.show = true , 3000);
     });
   }
+
 
 ngOnInit() {
   this.balance = this.customerIdService.getBalance();
