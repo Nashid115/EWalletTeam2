@@ -16,8 +16,8 @@ private val: any;
 valid = true;
 
 public requestForm = this.fb.group({
-    requested_from: ['',[ Validators.required, Validators.pattern("(^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)|\\d{10}")]],
-    amount: ['',[ Validators.required, Validators.pattern("^(\\d{1,})$")]]
+    requested_from: ['',[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
+    amount: ['',[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
   });
 
   constructor(
@@ -46,6 +46,7 @@ public requestForm = this.fb.group({
     .subscribe(data => {
       if (data.sender_id){
         this.valid = false;
+        setTimeout(() => this.valid = true , 3000);
       }
       else {
         this.valid = true;

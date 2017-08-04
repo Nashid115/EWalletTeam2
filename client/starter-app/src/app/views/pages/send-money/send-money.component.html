@@ -13,7 +13,7 @@
                 <br>
                 <input type="text" id="sendamount" class="form-control" formControlName="sendamount" placeholder="Enter amount to be sent" [(ngModel)]="data.amount">
                 <div *ngIf="sendForm.controls.sendamount.touched&&sendForm.controls.sendamount.pristine" class="alert alert-danger">Field is required</div>
-                <div *ngIf="sendForm.controls.sendamount.dirty&&sendForm.controls.sendamount.invalid" class="alert alert-danger">Please enter amount below 10000!</div>
+                <div *ngIf="sendForm.controls.sendamount.dirty&&sendForm.controls.sendamount.invalid" class="alert alert-danger">Please enter amount between 0 to 10000!</div>
                 <br>
                 <input [disabled]=sendForm.invalid type="submit" name="send" class="sendButton" value="SEND">
             </form>

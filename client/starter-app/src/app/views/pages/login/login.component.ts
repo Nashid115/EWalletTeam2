@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 validity = true;
 
   public loginForm = this.fb.group({
-    customer_detail: ["",[ Validators.required, Validators.pattern("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$|\\d{10}")]],
+    customer_detail: ["",[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
     customer_password: ["", Validators.required]
   });
 
@@ -45,6 +45,7 @@ validity = true;
         this.validity = true;
       } else {
         this.validity = false;
+        setTimeout(() => this.validity = true , 3000);
       }
   }
 

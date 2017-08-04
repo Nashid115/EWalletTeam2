@@ -8,7 +8,7 @@
     		
     		<input type="number" id="amount" class= "form-control" formControlName="wallet_amount" placeholder="Enter amount to be added to wallet" required>
     		
-    		<div *ngIf="addForm.controls.wallet_amount.dirty&&addForm.controls.wallet_amount.invalid" class="alert alert-danger">Please enter amount below 10000!
+    		<div *ngIf="addForm.controls.wallet_amount.dirty&&addForm.controls.wallet_amount.invalid" class="alert alert-danger">Please enter an amount between 0 to 10000!
     		</div>
     		<div [hidden]="valid" class="alert alert-danger">Balance cannot be more that 25000!!
     		</div>

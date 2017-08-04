@@ -13,7 +13,7 @@
     <br>
     
     <input type="number" id="requestamount" class="form-control" formControlName="amount" placeholder="Enter amount to be requested">
-    <div *ngIf="requestForm.controls.amount.invalid&&requestForm.controls.amount.dirty" class="alert alert-danger">Please enter amount!</div>
+    <div *ngIf="requestForm.controls.amount.invalid&&requestForm.controls.amount.dirty" class="alert alert-danger">Please enter amount between 0 to 10000!</div>
     <br>
     
     <input [disabled]=requestForm.invalid type="submit" name="request" class="requestButton" value="REQUEST">

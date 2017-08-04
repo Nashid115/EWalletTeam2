@@ -36,6 +36,7 @@
     }
 }
 
+.navbar-default .navbar-nav>li>a>i.fa-bell,
 .navbar-default .navbar-nav>li>a.username {
     color:white;
 }
@@ -51,16 +52,10 @@
     background-color: none;
 }
 
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>.open>a:hover {
-    color:#001973;
-    background-color: none;
-}
-
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>.open>a:hover {
+.navbar-default .navbar-nav>.open>a>i.fa-bell,
+.navbar-default .navbar-nav>.open>a>i.fa-bell:focus,
+.navbar-default .navbar-nav>.open>a>i:hover,
+.navbar-default .navbar-nav>.open>a:focus, {
     color:#001973;
     background-color: none;
 }
@@ -75,6 +70,11 @@
     clear: both;
     font-weight: 400;
     line-height: 1.42857143;
-    color: white;
+    color:white;
     white-space: nowrap;
+}
+
+.dropdown-menu>li>a:hover{
+    color:#001973;
+
 }
