@@ -3,7 +3,7 @@ import connection from '../../db/db-pg-connection.js';
 let EmployeeService = {
     getEmployees() {
         return new Promise((resolve, reject) => {
-            connection.query('SELECT * FROM public.employees', (err, res) => {
+            connection.query('SELECT * FROM public.transaction', (err, res) => {
                 if (err)
                     reject(err);
                 else
