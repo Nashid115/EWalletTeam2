@@ -14,6 +14,10 @@ import { CustomerIdService } from '../../../customer-id.service';
 export class RequestMoneyComponent implements OnInit {
 private val: any;
 valid = true;
+private cust_name = "";
+custEmail = "";
+custPhone = "";
+showSelf = true;
 
 public requestForm = this.fb.group({
     requested_from: ['',[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
@@ -36,15 +40,24 @@ public requestForm = this.fb.group({
     let obj= {
       customer_id : this.customer_id,
       requested_from : val.requested_from,
-      amount : val.amount
+      amount : val.amount,
+      customer_name : this.cust_name
     }
-    this.requestMoney(obj);
+    //console.log(obj.customer_name);
+    if(this.custEmail === obj.requested_from || this.custPhone === obj.requested_from){
+      this.showSelf = false;
+      setTimeout(() => this.showSelf = true , 3000);
+    } else {
+      this.requestMoney(obj);
+    }
   }
 
   requestMoney(value){
     this.requestService.postRequestData(value)
     .subscribe(data => {
+      console.log(data, "in cmp");
       if (data.sender_id){
+        console.log(data.sender_id);
         this.valid = false;
         setTimeout(() => this.valid = true , 3000);
       }
@@ -56,6 +69,9 @@ public requestForm = this.fb.group({
 
 
 ngOnInit() {
+  this.cust_name = this.customerIdService.getUserName();
+  this.custEmail = this.customerIdService.getEmail();
+  this.custPhone = this.customerIdService.getPhone();
   }
 
 }

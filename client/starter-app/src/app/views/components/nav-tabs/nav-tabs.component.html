@@ -1,29 +1,30 @@
 <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" />
 
+<div class="row">
+    <div class="container">
+        <div class="row tabsmain-width">
+            <div class="col-md-12">
+                <!-- Nav tabs -->
+                <div class="card">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation">
+                            <a [routerLink]="['/dashboard']" role="tab">  <span class="nav-tabs-content">Transaction</span></a>
+                        </li>
 
-<div class="container">
-    <div class="row tabsmain-width">
-        <div class="col-md-12">
-            <!-- Nav tabs -->
-            <div class="card">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation">
-                        <a [routerLink]="['/dashboard']" role="tab">  <span class="nav-tabs-content">Transaction</span></a>
-                    </li>
+                        <li role="presentation">
+                            <a [routerLink]="[{outlets : {actionRoutes : ['add-money']}}]" role="tab">  <span class="nav-tabs-content">Add Money</span></a>
+                        </li>
+                        <li role="presentation">
+                            <a [routerLink]="[{outlets : {actionRoutes : ['send-money']}}]" role="tab"> <span class="nav-tabs-content">Send Money</span></a>
+                        </li>
+                        <li role="presentation">
+                            <a [routerLink]="[{outlets : {actionRoutes : ['request-money']}}]" role="tab">  <span class="nav-tabs-content">Request Money</span></a>
+                        </li>
 
-                    <li role="presentation">
-                        <a [routerLink]="[{outlets : {actionRoutes : ['add-money']}}]" role="tab">  <span class="nav-tabs-content">Add Money</span></a>
-                    </li>
-                    <li role="presentation">
-                        <a [routerLink]="[{outlets : {actionRoutes : ['send-money']}}]" role="tab"> <span class="nav-tabs-content">Send Money</span></a>
-                    </li>
-                    <li role="presentation">
-                        <a [routerLink]="[{outlets : {actionRoutes : ['request-money']}}]" role="tab">  <span class="nav-tabs-content">Request Money</span></a>
-                    </li>
-
-                </ul>
+                    </ul>
 
 
+                </div>
             </div>
         </div>
     </div>

@@ -11,10 +11,9 @@ export class SendMoneyService {
   private apiURL = 'http://10.0.1.62:8080/api/customer/send';
 
    postRegister(sendMoneyPostData){
-
        return this._http.post(this.apiURL, sendMoneyPostData)
         .toPromise()
-        .then((response:Response) => response.json());
+        .then(res => res.json());
 
         
     }

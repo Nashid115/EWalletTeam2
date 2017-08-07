@@ -12,6 +12,10 @@ export class TransactionComponent implements OnInit {
 
   History : any;
   customer_id = null;
+  customer_name = "";
+  show=true;
+  len = null;
+  p: number = 1;
 
   constructor(
     private historyService: HistoryService,
@@ -25,11 +29,18 @@ export class TransactionComponent implements OnInit {
 
   reverse(data) {
     this.History = data.reverse();
+    //console.log(this.History);
+    this.len = this.History.length;
+    if(this.len===0){
+      this.show = false;
+    }
+    console.log(this.len);
   }
 
 
   ngOnInit() {
     this.customer_id = this.customerIdService.getUser();
+    this.customer_name = this.customerIdService.getUserName();
     this.loadTransaction();
   }
 

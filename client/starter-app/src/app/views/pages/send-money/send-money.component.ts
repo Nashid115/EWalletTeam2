@@ -12,7 +12,7 @@ import { CustomerIdService } from '../../../customer-id.service';
   styleUrls: ['./send-money.component.scss']
 })
 export class SendMoneyComponent implements OnInit {
-  sendmoneydata:any={};
+ sendmoneydata:any={};
  responsedata :any ={};
  subscription: Subscription; 
  Balance = null;
@@ -20,6 +20,13 @@ export class SendMoneyComponent implements OnInit {
  success=true;
  greateramount=true;
  validity=true;
+ custName = "";
+ show = true;
+ custEmail ="";
+ custPhone="";
+ showSelf = true;
+
+
 public sendForm = this.fb.group({
     emailphone: ["",[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
     sendamount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
@@ -36,10 +43,16 @@ checkCondition(sendmoneydata){
    let obj={
      "customer_id" : this.customerIdService.getUser(),
      "reciever" : sendmoneydata.reciever,
-     "amount" : sendmoneydata.amount
-
+     "amount" : sendmoneydata.amount,
+     "customer_name" : this.custName
     }
-    this.postFunction(obj);
+    if(this.custEmail === sendmoneydata.reciever || this.custPhone === sendmoneydata.reciever){
+      this.showSelf = false;
+      setTimeout(() => this.showSelf = true , 3000);
+    } else {
+      this.showSelf = true;
+      this.postFunction(obj);
+    }
   }
 
 }
@@ -55,21 +68,33 @@ checkCondition(sendmoneydata){
 postFunction(obj) {
   this.sendMoneyService.postRegister(obj)
     .then(data => {
-    this.wAmount(data);  
-  },
-error =>{
+      console.log(data,'x');
+      this.wAmount(data);  
+    },
+  error =>{
+   console.log(error.json());
    this.handleError(error);
-});
+  });
 }
 
 wAmount(data) {
-    this.success=false;
-    setTimeout(() => this.success = true , 3000);
-    this.validity=true;
-    this.balanceService.updateBalance(data.wallet_amount);
+  console.log(data);
+    if(data.error){
+      this.show = false;
+      setTimeout(() => this.show = true , 3000);
+    } else {
+        this.show = true;
+        this.success=false;
+        setTimeout(() => this.success = true , 3000);
+        this.validity=true;
+        this.balanceService.updateBalance(data.wallet_amount);
+    }
 }
 handleError(error){
-  if(error.status === 400){
+  console.log(error.json());
+  if(error.json().error){
+    this.show = false;
+  } else if(error.status === 400){
    this.validity=false;
    setTimeout(() => this.validity = true , 3000);
   }
@@ -77,6 +102,9 @@ handleError(error){
 
 ngOnInit() {
   this.Balance = this.customerIdService.getBalance();
+  this.custName = this.customerIdService.getUserName();
+  this.custEmail = this.customerIdService.getEmail();
+  this.custPhone = this.customerIdService.getPhone();
   }
 
 }  

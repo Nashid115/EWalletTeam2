@@ -1,3 +1,7 @@
+.text {
+    color: white;
+}
+
 .nav-theme {
     background-color: #34495E;
     border-color: #34495E
@@ -13,6 +17,9 @@
 
 .navbar {
     border-radius: 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
 }
 
 .logo-position {
@@ -62,6 +69,7 @@
 
 .navbar-nav>li>.dropdown-menu {
     background-color: #34495E;
+    max-width: 70px;
 }
 
 .dropdown-menu>li>a {
@@ -70,11 +78,11 @@
     clear: both;
     font-weight: 400;
     line-height: 1.42857143;
-    color:white;
-    white-space: nowrap;
+    font-color:white;
+    // white-space: nowrap;
 }
 
 .dropdown-menu>li>a:hover{
-    color:#001973;
+    font-color:#ffffff;
 
 }

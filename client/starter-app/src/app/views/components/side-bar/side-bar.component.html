@@ -4,10 +4,38 @@
     <div class="row align-img">
         <img src="assets/download.jpg" width="170" height="170" class="moneybag-image">
     </div>
-
+    <br>
     <div class="row">
 
         <p class="balance align-img">Balance : {{balance}}</p>
+        <br><br>
+        <button class="reload" (click) ="callBalance()"> Update </button>
     </div>
+    <br>
+    <div class="row">
+        <p class="ewallet-limit"><b>Ewallet limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{percentage}} type="danger">{{percentage}}%</progressbar>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+
+        <p class="instruction"> INSTRUCTIONS </p>
+        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Transaction Limit : 10,000 Rs</p>
+        <p class="limit align-img"> <i class="fa fa-google-wallet" style="font-size:16px; margin-top:5px"></i> Wallet Limit : 25,000 Rs</p>
+
+    </div>
+    <br>
+    <br>
+    <div>
+        <p class="profile-info">Profile Info
+        </p>
+        <p class="profile">User Name : {{customer_name}}</p>
+        <p class="profile">User phone : {{customer_phone_no}}</p>
+        <p class="profile">User email : {{customer_email}}</p>
+    </div>
+
+
 
 </div>
