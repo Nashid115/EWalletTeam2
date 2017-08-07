@@ -25,6 +25,7 @@ export class SendMoneyComponent implements OnInit {
  custEmail ="";
  custPhone="";
  showSelf = true;
+ hideLimit = true;
 
 
 public sendForm = this.fb.group({
@@ -51,6 +52,7 @@ checkCondition(sendmoneydata){
       setTimeout(() => this.showSelf = true , 3000);
     } else {
       this.showSelf = true;
+      console.log(obj);
       this.postFunction(obj);
     }
   }
@@ -78,7 +80,7 @@ postFunction(obj) {
 }
 
 wAmount(data) {
-  console.log(data);
+  console.log(data,"send data");
     if(data.error){
       this.show = false;
       setTimeout(() => this.show = true , 3000);
@@ -91,9 +93,12 @@ wAmount(data) {
     }
 }
 handleError(error){
-  console.log(error.json());
+  console.log(error.json(), "error recieve");
   if(error.json().error){
     this.show = false;
+  } else if(error.status === 400 && error.json().send_limit === 10000){
+    this.hideLimit = false;
+    setTimeout(() => this.hideLimit = true , 3000);
   } else if(error.status === 400){
    this.validity=false;
    setTimeout(() => this.validity = true , 3000);

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {ModuleWithProviders} from '@angular/core'
+import { ModuleWithProviders } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
 import { LoginComponent } from './views/pages/login/login.component';

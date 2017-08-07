@@ -6,7 +6,7 @@ import { Http, Response } from '@angular/http';
 
 @Injectable()
 export class WalletService {
-	private apiUrl = 'http://10.0.1.30:8080/api/customer/balance/';
+	private apiUrl = 'http://10.0.1.62:8080/api/customer/balance/';
   constructor(
   	private http: Http) { }
 

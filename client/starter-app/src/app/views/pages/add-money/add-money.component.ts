@@ -22,6 +22,8 @@ export class AddMoneyComponent implements OnInit {
   show = true;
   balance = null;
   subscription : Subscription;
+  customer_id = "";
+  hideLimit = true;
 
   constructor(
     public router: Router,
@@ -31,7 +33,7 @@ export class AddMoneyComponent implements OnInit {
     public customerIdService: CustomerIdService
     ) { this.subscription = this.balanceService.getBalance().subscribe(balance => this.balance = balance); }
 
-  customer_id = this.customerIdService.getUser();
+  
 
   add(form) {
     if((form._value.wallet_amount + this.balance) > 25000) {
@@ -58,12 +60,23 @@ export class AddMoneyComponent implements OnInit {
       this.balanceService.updateBalance(data.wallet_amount);
       this.show = false;
       setTimeout(() => this.show = true , 3000);
-    });
+    },
+
+    err => this.showDailyLimit(err.json()));
+  }
+
+  showDailyLimit(err) {
+    console.log(err);
+    if(err.limit === 10000){
+      this.hideLimit = false;
+      setTimeout(() => this.hideLimit = true , 3000);
+    }
   }
 
 
 ngOnInit() {
   this.balance = this.customerIdService.getBalance();
+  this.customer_id = this.customerIdService.getUser();
   }
 
 }

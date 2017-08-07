@@ -25,9 +25,11 @@ export class SideBarComponent implements OnInit {
     public balanceService: BalanceService,
     public customerIdService: CustomerIdService,
     public walletService: WalletService
-    ) { this.subscription = this.balanceService.getBalance().subscribe(balance => this.balance = balance);}
+    ) { this.subscription = this.balanceService.getBalance().subscribe(balance => {this.balance = balance; 
+        this.percentage = (this.balance/25000)*100;}); }
 
   callBalance() {
+    console.log(this.customer_id);
     this.walletService.fetchBalance(this.customer_id)
       .then(data => this.setBalance(data));
     
@@ -35,6 +37,8 @@ export class SideBarComponent implements OnInit {
 
 
   setBalance(data) {
+    console.log(data);
+    this.balanceService.updateBalance(data.wallet_amount);
     this.balance = data.wallet_amount;
     this.percentage = (this.balance/25000)*100;
   }
