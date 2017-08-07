@@ -38,7 +38,7 @@
                     <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
                     <ul class="dropdown-menu" *ngFor="let request of history" >
                         <li *ngIf="request.status===3&&userName===request.sender_name" >
-                            <div>{{request.reciever_name}} has requested Rs. {{request.amount}}</div>
+                            <div class ="text">{{request.reciever_name}} has requested Rs. {{request.amount}}</div>
                         </li>
                     </ul>
                 </li>
