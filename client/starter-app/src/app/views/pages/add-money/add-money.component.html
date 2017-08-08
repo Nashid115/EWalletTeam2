@@ -6,11 +6,13 @@
         <B>ADD MONEY TO WALLET</B>
       </p>
       <form [formGroup]="addForm" (ngSubmit)="add(addForm)">
-        <input type="number" id="amount" class="form-control" formControlName="wallet_amount" placeholder="Enter amount to be added to wallet" required>
-        <div *ngIf="addForm.controls.wallet_amount.dirty&&addForm.controls.wallet_amount.invalid" class="alert alert-danger">Please enter amount below 10000!</div>
-        <div [hidden]="valid" class="alert alert-danger">Balance cannot be more that 25000!!</div>
-        <div [hidden]="show" class="alert alert-success">Amount added succesfully!</div>
-        <div [hidden]="hideLimit" class="alert alert-danger">Oops! Transaction limit of 10K reached for today!</div>
+        <input type="number" step="any" min="1" max="10000" id="amount" class="form-control" formControlName="wallet_amount" placeholder="Enter amount to be added to wallet" required>
+        <div *ngIf="addForm.controls.wallet_amount.dirty&&addForm.controls.wallet_amount.invalid" class="alert alert-danger">Please enter amount below 10000!
+        </div>
+        <div [hidden]="valid" class="alert alert-danger">Balance cannot be more that 25000!!
+        </div>
+        <div [hidden]="show" class="alert alert-success">Amount added succesfully!
+        </div>
         <input [disabled]="addForm.invalid" type="submit" name="add" class="addButton" value="ADD">
       </form>
     </div>

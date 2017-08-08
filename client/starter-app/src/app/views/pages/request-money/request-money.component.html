@@ -12,7 +12,7 @@
     <div *ngIf="requestForm.controls.requested_from.invalid&&requestForm.controls.requested_from.dirty" class="alert alert-danger">Please enter valid email or phone number!</div>
     <br>
     
-    <input type="number" id="requestamount" class="form-control" formControlName="amount" placeholder="Enter amount to be requested">
+    <input type="number" step="any" min="1" max="10000" id="requestamount" class="form-control" formControlName="amount" placeholder="Enter amount to be requested">
     <div *ngIf="requestForm.controls.amount.invalid&&requestForm.controls.amount.dirty" class="alert alert-danger">Please enter amount between 0 to 10000!</div>
     <div [hidden]="valid" class="alert alert-success">Request sent successfully!</div>
     <div [hidden]="showSelf" class="alert alert-danger">Oops! Can't request to yourself!</div>

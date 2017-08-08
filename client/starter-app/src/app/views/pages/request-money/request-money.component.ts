@@ -21,7 +21,7 @@ showSelf = true;
 
 public requestForm = this.fb.group({
     requested_from: ['',[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
-    amount: ['',[ Validators.required, Validators.pattern("^(?:10000)$|^[0-9]{1,7}(\.[0-9]+)?$")]]
+    amount: ['', Validators.required ]
   });
 
   constructor(

@@ -33,9 +33,9 @@ export class TopNavComponent implements OnInit {
     this.history = data.reverse();
     this.length= this.history.length;
     for(let i=0;i<this.length;i++) {
-      if(data[i].status===3) {
+      if(data[i].status===3 && this.userName === data[i].sender_name) {
         this.requestLength++;
-        console.log(data[i].status);
+        console.log(data[i].status, data[i].sender_name);
       }
     }
   }

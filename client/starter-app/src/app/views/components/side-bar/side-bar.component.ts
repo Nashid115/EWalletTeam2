@@ -13,7 +13,7 @@ import { ProgressbarModule } from 'ngx-bootstrap';
 })
 export class SideBarComponent implements OnInit {
   responsedata : any ={};
-  balance : any;
+  balance = 0;
   balanceSubscription : Subscription;
   addLimitSubscription : Subscription;
   sendLimitSubscription : Subscription;
@@ -22,10 +22,10 @@ export class SideBarComponent implements OnInit {
   customer_name = "";
   customer_email = "";
   customer_phone_no = "";
-  addLimit : any;
-  addpercentage = null;
-  sendLimit :any;
-  sendpercentage =null ;
+  addLimit = 0;
+  addpercentage = 0;
+  sendLimit = 0;
+  sendpercentage = 0 ;
 
   constructor(
     public balanceService: BalanceService,
