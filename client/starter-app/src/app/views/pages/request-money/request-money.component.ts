@@ -72,6 +72,7 @@ ngOnInit() {
   this.cust_name = this.customerIdService.getUserName();
   this.custEmail = this.customerIdService.getEmail();
   this.custPhone = this.customerIdService.getPhone();
+  this.customer_id = this.customerIdService.getUser();
   }
 
 }
