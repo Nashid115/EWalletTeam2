@@ -16,7 +16,7 @@
       <div *ngIf="registerForm.controls.password.invalid&&registerForm.controls.password.dirty" class="alert alert-danger">Password should have atleast 1 Uppercase, 1 lowercase, 1 digit, 1 special character and should have min. length of 8! </div>
       <br>
       <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password>
-      <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password did not match</div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.dirty">Password did not match</div>
       <br>
       <button [disabled]=registerForm.invalid class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button>
       <br>

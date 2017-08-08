@@ -12,29 +12,13 @@ export class CustomerIdService {
   userEmail = "";
   userPhone = "";
   user : any
+  get_add_data = null;
+  get_send_data = null;
 
   setUser(obj) {
     localStorage.setItem('user',obj);
    }
-  get_add_data = null;
-  get_send_data = null;
-  // setUserName(name) {
-  //   this.userName = name;
-  // }
-
-  // setEmail(email) {
-  //   this.userEmail = email;
-  // }
-
-  // setBalance(balance) {
-  // 	this.balance = balance;
-  // }
-
-  // setPhone(phone) {
-  //   this.userPhone = phone;
-  // }
-
-
+ 
   getAddLimit(){
     this.get_add_data = JSON.parse(localStorage.getItem('user')).wallet_amount.todays_wallet_limit;
     return this.get_add_data;
@@ -62,6 +46,7 @@ export class CustomerIdService {
 
   getBalance(){
     this.balance = JSON.parse(localStorage.getItem('user')).wallet_amount.wallet_amount;
+    console.log(this.balance,"in service");
   	return this.balance;
   }
 
@@ -72,7 +57,6 @@ export class CustomerIdService {
 
   clearUser() {
     localStorage.clear();
-  	//this.userID = null;
   	return;
   }
 

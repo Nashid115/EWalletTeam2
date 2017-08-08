@@ -70,7 +70,6 @@ checkCondition(sendmoneydata){
 postFunction(obj) {
   this.sendMoneyService.postRegister(obj)
     .then(data => {
-      console.log(data,'x');
       this.wAmount(data);  
     },
   error =>{
@@ -108,6 +107,7 @@ handleError(error){
 
 ngOnInit() {
   this.Balance = this.customerIdService.getBalance();
+  console.log(this.Balance, "in component")
   this.custName = this.customerIdService.getUserName();
   this.custEmail = this.customerIdService.getEmail();
   this.custPhone = this.customerIdService.getPhone();
