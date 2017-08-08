@@ -2,14 +2,14 @@
 
 
     <div class="row align-img">
-        <img src="assets/download.jpg" width="170" height="170" class="moneybag-image">
+        <img src="assets/images.jpg" width="170" height="170" class="moneybag-image">
     </div>
     <br>
     <div class="row">
 
         <p class="balance align-img">Balance : {{balance}}</p>
         <br><br>
-        <button class="reload" (click) ="callBalance()"> Update </button>
+        <button class="reload" (click)="callBalance();getAddBalanceData();getSendBalanceDaily()"> Update </button>
     </div>
     <br>
     <div class="row">
@@ -20,9 +20,22 @@
     </div>
     <br>
     <div class="row">
+        <p class="ewallet-limit"><b>Daily Add limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{addpercentage}} type="danger">{{addpercentage}}%</progressbar>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <p class="ewallet-limit"><b>Daily Send limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{sendpercentage}} type="danger">{{sendpercentage}}%</progressbar>
+        </div>
+    </div>
+    <div class="row">
 
-        <p class="instruction"> INSTRUCTIONS </p>
-        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Transaction Limit : 10,000 Rs</p>
+        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Send Money Limit : 10,000 Rs</p>
+        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Add Money Limit : 10,000 Rs</p>
         <p class="limit align-img"> <i class="fa fa-google-wallet" style="font-size:16px; margin-top:5px"></i> Wallet Limit : 25,000 Rs</p>
 
     </div>
@@ -31,9 +44,9 @@
     <div>
         <p class="profile-info">Profile Info
         </p>
-        <p class="profile">User Name : {{customer_name}}</p>
-        <p class="profile">User phone : {{customer_phone_no}}</p>
-        <p class="profile">User email : {{customer_email}}</p>
+        <!-- <p class="profile">User Name : {{customer_name}}</p> -->
+        <p class="profile"> email : {{customer_email}}</p>
+        <p class="profile"> phone : {{customer_phone_no}}</p>
     </div>
 
 

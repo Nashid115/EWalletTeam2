@@ -20,6 +20,10 @@ export class SideBarComponent implements OnInit {
   customer_name = "";
   customer_email = "";
   customer_phone_no = "";
+  get_add_data : any;
+  addpercentage = null;
+  get_send_data :any;
+  sendpercentage =null ;
 
   constructor(
     public balanceService: BalanceService,
@@ -39,6 +43,22 @@ export class SideBarComponent implements OnInit {
     this.percentage = (this.balance/25000)*100;
   }
 
+  getAddBalanceData(){
+     this.walletService.getaddDaily(this.customer_id)
+   .subscribe(data =>{ this.get_add_data = data;
+    this.addpercentage = (this.get_add_data.todays_wallet_limit/10000)*100;
+    console.log(data, this.addpercentage ,"gdghdhghgsdgh")
+    })
+
+  }
+   getSendBalanceDaily(){
+     this.walletService.getsendDaily(this.customer_id)
+   .subscribe(data =>{ this. get_send_data = data;
+    this.sendpercentage = (this. get_send_data.send_limit/10000)*100;
+    console.log(data, this.sendpercentage ,"gdghdhghgsdgh")
+    })
+
+  } 
   ngOnInit() {
      this.balance = this.customerIdService.getBalance();
      this.percentage = (this.balance/25000)*100;

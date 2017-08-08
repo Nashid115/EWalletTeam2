@@ -13,6 +13,7 @@ export class TopNavComponent implements OnInit {
   private balance = null;
   private history : any;
   private customer_id: null;
+  length :any;
 
   constructor(
     private customerIdService: CustomerIdService,
@@ -29,7 +30,8 @@ export class TopNavComponent implements OnInit {
 
   reverse(data) {
     this.history = data.reverse();
-    console.log(this.history);
+    this.length= this.history.length;
+    console.log(this.history.length,"histiry");
   }
 
   ngOnInit() {

@@ -29,6 +29,7 @@ import { CustomerIdService} from './customer-id.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { WalletService } from './views/components/side-bar/wallet.service';
 import { ProgressbarModule } from 'ngx-bootstrap';
+import { NumberOnlyDirective } from './number-only.directive';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ProgressbarModule } from 'ngx-bootstrap';
     TopNavComponent,
     NavTabsComponent,
     SideBarComponent,
-    DashboardComponent
+    DashboardComponent,
+    NumberOnlyDirective
   ],
   imports: [
     BrowserModule,

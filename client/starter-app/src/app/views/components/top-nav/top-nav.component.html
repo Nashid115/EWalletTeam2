@@ -22,7 +22,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                
+
                 <!-- <li class="dropdown">
                     <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
                     <ul class="dropdown-menu">
@@ -35,10 +35,10 @@
                 <li><a class="username" routerLink="/login" (ngSubmit)="logout()">Log out</a></li>
                 <!-- <li><a routerLink="#" target="_blank" class="nav-pages"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a></li> -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle notification" data-toggle="dropdown"><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
-                    <ul class="dropdown-menu" *ngFor="let request of history" >
-                        <li *ngIf="request.status===3&&userName===request.sender_name" >
-                            <div class ="text">{{request.reciever_name}} has requested Rs. {{request.amount}}</div>
+                    <a class="dropdown-toggle notification" data-toggle="dropdown"><span class="badge badge-notify">{{length}}</span><i class="fa fa-bell fa-lg"  aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu" *ngFor="let request of history">
+                        <li *ngIf="request.status===3&&userName===request.sender_name">
+                            <div class="text">{{request.reciever_name}} has requested Rs. {{request.amount}}</div>
                         </li>
                     </ul>
                 </li>
