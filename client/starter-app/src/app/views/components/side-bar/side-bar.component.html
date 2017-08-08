@@ -8,6 +8,7 @@
     <div class="row">
 
         <p class="balance align-img">Balance : {{balance}}</p>
+
         <br><br>
         <button class="reload" (click)="callBalance();getAddBalanceData();getSendBalanceDaily()"> Update </button>
     </div>
@@ -22,14 +23,14 @@
     <div class="row">
         <p class="ewallet-limit"><b>Daily Add limit </b></p>
         <div class="col-sm-12">
-            <progressbar class="progress-striped" value={{addpercentage}} type="danger">{{addpercentage}}%</progressbar>
+            <progressbar class="progress-striped" value={{addpercentage}} type="danger">{{get_add_data}}/10000</progressbar>
         </div>
     </div>
     <br>
     <div class="row">
         <p class="ewallet-limit"><b>Daily Send limit </b></p>
         <div class="col-sm-12">
-            <progressbar class="progress-striped" value={{sendpercentage}} type="danger">{{sendpercentage}}%</progressbar>
+            <progressbar class="progress-striped" value={{sendpercentage}} type="danger">{{get_send_data}}/10000</progressbar>
         </div>
     </div>
     <div class="row">

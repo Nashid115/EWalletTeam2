@@ -6,13 +6,18 @@ import { Subject } from 'rxjs/Subject';
 export class BalanceService {
 	private balance = new Subject<any>();
 
+
 	updateBalance(value) {
 		this.balance.next(value);
+		
 	}
+	
 
 	getBalance(): Observable<any> {
 		return this.balance.asObservable();
+		
 	}
+	
 
   constructor() { }
 

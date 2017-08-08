@@ -33,34 +33,29 @@ export class SideBarComponent implements OnInit {
 
   callBalance() {
     this.walletService.fetchBalance(this.customer_id)
-      .then(data => this.setBalance(data));
+      .subscribe(data => this.setBalance(data)
+    );
     
   }
 
 
   setBalance(data) {
     this.balance = data.wallet_amount;
+     this.get_add_data = data.todays_wallet_limit;
+     this. get_send_data  = data.send_limit;
     this.percentage = (this.balance/25000)*100;
+    this.addpercentage  = (this.get_add_data/10000)*100;
+    this.sendpercentage = (this.get_send_data/10000)*100;
   }
 
-  getAddBalanceData(){
-     this.walletService.getaddDaily(this.customer_id)
-   .subscribe(data =>{ this.get_add_data = data;
-    this.addpercentage = (this.get_add_data.todays_wallet_limit/10000)*100;
-    console.log(data, this.addpercentage ,"gdghdhghgsdgh")
-    })
-
-  }
-   getSendBalanceDaily(){
-     this.walletService.getsendDaily(this.customer_id)
-   .subscribe(data =>{ this. get_send_data = data;
-    this.sendpercentage = (this. get_send_data.send_limit/10000)*100;
-    console.log(data, this.sendpercentage ,"gdghdhghgsdgh")
-    })
-
-  } 
+   
   ngOnInit() {
      this.balance = this.customerIdService.getBalance();
+     this.get_add_data = this.customerIdService.getAddLimit();
+      this.get_send_data = this.customerIdService.getSendLimit();
+
+     this.addpercentage = (this.get_add_data/10000)*100;
+     this.sendpercentage = (this.get_send_data/10000)*100;
      this.percentage = (this.balance/25000)*100;
      this.customer_id = this.customerIdService.getUser();
      this.customer_email = this.customerIdService.getEmail();

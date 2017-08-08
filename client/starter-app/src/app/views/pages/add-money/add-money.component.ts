@@ -55,6 +55,7 @@ export class AddMoneyComponent implements OnInit {
   addMoney(value){
     this.addMoneyService.addBalance(value)
     .subscribe(data => {
+      console.log(data,data.wallet_amount,"add data")
       this.balanceService.updateBalance(data.wallet_amount);
       this.show = false;
       setTimeout(() => this.show = true , 3000);

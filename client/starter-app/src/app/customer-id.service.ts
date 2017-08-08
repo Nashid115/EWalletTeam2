@@ -11,7 +11,8 @@ export class CustomerIdService {
   successRegister = false;
   userEmail = "";
   userPhone = "";
-
+  get_add_data = null;
+  get_send_data = null;
   setUser(id) {
   	this.userID = id;
   }
@@ -31,6 +32,21 @@ export class CustomerIdService {
   setPhone(phone) {
     this.userPhone = phone;
   }
+
+ setAddLimit(addlimit){
+   this.get_add_data = addlimit;
+ }
+
+  getAddLimit(){
+  return this.get_add_data;
+ }
+ setSendLimit(sendlimit){
+   this.get_send_data = sendlimit;
+ }
+  
+  getSendLimit(){
+  return this.get_send_data;
+ }
 
   getEmail() {
     return this.userEmail;
