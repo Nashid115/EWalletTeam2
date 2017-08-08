@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   Login(form) {
     this.loginService.postLoginData(form._value)
     .subscribe(data => {
+      console.log(data,"login data")
       this.checkUserValid(data);
       console.log(data,"login")
       },
@@ -45,13 +46,7 @@ export class LoginComponent implements OnInit {
 
   checkUserValid(user: any) {
     if (user.customer_id) {
-        // this.customerIdService.setUser(user.customer_id);
         this.customerIdService.setUser(JSON.stringify(user));
-        // this.customerIdService.setUserName(user.customer_name);
-        // this.customerIdService.setBalance(user.wallet_amount.wallet_amount);
-        // this.customerIdService.setEmail(user.customer_email);
-        // this.customerIdService.setPhone(user.customer_phone_no);
-        // this.balanceService.updateBalance(user.wallet_amount.wallet_amount);
         this.router.navigate(['./dashboard']);
         this.validity = true;
       } else {

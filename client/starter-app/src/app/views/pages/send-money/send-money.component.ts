@@ -61,7 +61,7 @@ checkCondition(sendmoneydata){
 
   constructor(private sendMoneyService: SendMoneyService,
     private balanceService : BalanceService,
-    private customerIdService : CustomerIdService,
+    private customerIdService   : CustomerIdService,
     public router : Router, 
     public fb: FormBuilder)
      { this.subscription = this.balanceService.getBalance().subscribe(balance => this.Balance = balance) }
@@ -90,6 +90,7 @@ wAmount(data) {
         setTimeout(() => this.success = true , 3000);
         this.validity=true;
         this.balanceService.updateBalance(data.wallet_amount);
+        this.balanceService.updateSendLimit(data.send_limit);
     }
 }
 handleError(error){

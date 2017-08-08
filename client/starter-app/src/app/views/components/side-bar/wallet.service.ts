@@ -12,7 +12,12 @@ export class WalletService {
 
   fetchBalance(id) {
   	return this.http.get(this.apiUrl+id)
-  	.toPromise()
-  	.then(res => res.json());
-  }
+   .map((resp:Response) => resp.json())
+
+	
+	}
+
+	
+	
+
 }

@@ -15,11 +15,9 @@ export class CustomerIdService {
 
   setUser(obj) {
     localStorage.setItem('user',obj);
-    // this.user = JSON.parse(sessionStorage.getItem('user'));
-    // console.log(this.user,"in service");
-  	//this.userID = id;
-  }
-
+   }
+  get_add_data = null;
+  get_send_data = null;
   // setUserName(name) {
   //   this.userName = name;
   // }
@@ -35,6 +33,17 @@ export class CustomerIdService {
   // setPhone(phone) {
   //   this.userPhone = phone;
   // }
+
+
+  getAddLimit(){
+    this.get_add_data = JSON.parse(localStorage.getItem('user')).wallet_amount.todays_wallet_limit;
+    return this.get_add_data;
+   }
+  
+  getSendLimit(){
+    this.get_send_data = JSON.parse(localStorage.getItem('user')).wallet_amount.send_limit;
+    return this.get_send_data;
+   }
 
   getEmail() {
     this.userEmail = JSON.parse(localStorage.getItem('user')).customer_email;

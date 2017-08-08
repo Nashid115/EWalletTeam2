@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class AddMoneyComponent implements OnInit {
 
   public addForm = this.fb.group({
-     wallet_amount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$"), Validators.minLength(1), Validators.maxLength(10000)]]
+     wallet_amount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^[0-9]{1,7}(\.[0-9]+)?$"), Validators.minLength(1), Validators.maxLength(10000)]]
   });
 
   valid = true;
@@ -57,8 +57,8 @@ export class AddMoneyComponent implements OnInit {
   addMoney(value){
     this.addMoneyService.addBalance(value)
     .subscribe(data => {
-      console.log(data,"add");
       this.balanceService.updateBalance(data.wallet_amount);
+      this.balanceService.updateAddLimit(data.todays_wallet_limit);
       this.show = false;
       setTimeout(() => this.show = true , 3000);
     },
@@ -74,6 +74,8 @@ export class AddMoneyComponent implements OnInit {
     }
   }
 
+
+  
 
 ngOnInit() {
   this.balance = this.customerIdService.getBalance();

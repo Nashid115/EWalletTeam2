@@ -30,6 +30,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { WalletService } from './views/components/side-bar/wallet.service';
 import { ProgressbarModule } from 'ngx-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { ProgressbarModule } from 'ngx-bootstrap';
     NavTabsComponent,
     SideBarComponent,
     DashboardComponent
+ 
   ],
   imports: [
     BrowserModule,

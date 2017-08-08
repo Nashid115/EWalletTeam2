@@ -45,7 +45,7 @@
 
 .navbar-default .navbar-nav>li>a>i.fa-bell,
 .navbar-default .navbar-nav>li>a.username {
-    color:white;
+    color: white;
 }
 
 .navbar-default[_ngcontent-c1] .navbar-nav[_ngcontent-c1]>li[_ngcontent-c1]>a.username[_ngcontent-c1] {
@@ -62,8 +62,9 @@
 .navbar-default .navbar-nav>.open>a>i.fa-bell,
 .navbar-default .navbar-nav>.open>a>i.fa-bell:focus,
 .navbar-default .navbar-nav>.open>a>i:hover,
-.navbar-default .navbar-nav>.open>a:focus, {
-    color:#001973;
+.navbar-default .navbar-nav>.open>a:focus,
+{
+    color: white;
     background-color: none;
 }
 
@@ -78,11 +79,17 @@
     clear: both;
     font-weight: 400;
     line-height: 1.42857143;
-    font-color:white;
+    font-color: white;
     // white-space: nowrap;
 }
 
-.dropdown-menu>li>a:hover{
-    font-color:#ffffff;
+.dropdown-menu>li>a:hover {
+    font-color: #ffffff;
+}
 
+.badge-notify {
+    background-color: #e1333c;
+    position: absolute;
+    left: 30px;
+    top: 5px;
 }
