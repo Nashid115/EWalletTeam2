@@ -1,6 +1,6 @@
-# webapp-seed-es6
+﻿# E-Wallet
 
-This is my opinionated starter for an Express & Angular2 web app. In order to leverage the latest version of JS(ES6) at the server side, It uses Babel as a transpiler.
+E-Wallet app by team 2 (Ashwin, Chaitra, Gayathri and Rishikesh).
 
 ## Setup
 
