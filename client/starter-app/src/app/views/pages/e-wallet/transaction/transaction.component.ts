@@ -37,6 +37,10 @@ export class TransactionComponent implements OnInit {
     console.log(this.len);
   }
 
+  filter(type){
+    console.log(type);
+  }
+
 
   ngOnInit() {
     this.customer_id = this.customerIdService.getUser();

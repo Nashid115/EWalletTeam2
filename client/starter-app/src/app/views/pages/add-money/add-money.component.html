@@ -6,7 +6,7 @@
 			<B>ADD MONEY TO WALLET</B></p>
 			<form [formGroup]="addForm" (ngSubmit)="add(addForm)">
     		
-    	        <input type="number" id="amount" class="form-control" formControlName="wallet_amount" placeholder="Enter amount to be added to wallet" required>
+    	        <input type="number" step="any" min="1" max="10000" id="amount" class="form-control" formControlName="wallet_amount" placeholder="Enter amount to be added to wallet" required>
 
                 <div *ngIf="addForm.controls.wallet_amount.dirty&&addForm.controls.wallet_amount.invalid" class="alert alert-danger">Please enter amount below 10000!
                 </div>
