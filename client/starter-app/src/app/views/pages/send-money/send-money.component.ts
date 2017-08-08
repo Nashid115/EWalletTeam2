@@ -30,7 +30,7 @@ export class SendMoneyComponent implements OnInit {
 
 public sendForm = this.fb.group({
     emailphone: ["",[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
-    sendamount: ["", Validators.required ]
+    sendamount: ["",[Validators.required, Validators.min(0), Validators.max(10000)]]
   });
 
 checkCondition(sendmoneydata){

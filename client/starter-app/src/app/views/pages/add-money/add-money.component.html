@@ -13,6 +13,8 @@
         </div>
         <div [hidden]="show" class="alert alert-success">Amount added succesfully!
         </div>
+        <div [hidden]="hideLimit" class="alert alert-danger">Sorry! Daily addition limit reached!
+        </div>
         <input [disabled]="addForm.invalid" type="submit" name="add" class="addButton" value="ADD">
       </form>
     </div>
