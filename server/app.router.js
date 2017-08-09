@@ -7,7 +7,6 @@ import customerRouter from './api/customers/customer.router.js';
 import transactionRouter from './api/transaction/transaction.router.js';
 import walletRouter from './api/wallet/wallet.router.js';
 
-// const Customer =require('../models/customer.js');
 let router = new express.Router();
 
 router.use('/transactions', transactionRouter);

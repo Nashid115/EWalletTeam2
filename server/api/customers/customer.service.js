@@ -47,9 +47,7 @@ let CustomerService = {
     checkCustomer(obj) {
         return new Promise((resolve, reject) => {
             const tableQuery = {
-                // give the query a unique name
                 text: 'SELECT customer_id,customer_name,customer_email,customer_phone_no FROM customer WHERE (customer_email = $1 OR customer_phone_no = $1)  AND customer_password=$2 ',
-                // text: '',
                 values: [obj.customer_detail, obj.customer_password]
             }
             connection.query(tableQuery, (err, res) => {
@@ -64,9 +62,7 @@ let CustomerService = {
     sendUserData(data) {
         return new Promise((resolve, reject) => {
             const tableQuery = {
-                // give the query a unique name
                 text: 'SELECT wallet_amount,todays_wallet_limit,send_limit FROM wallet WHERE customer_id=$1',
-                // text: '',
                 values: [data]
             }
             connection.query(tableQuery, (err, res) => {
@@ -82,7 +78,6 @@ let CustomerService = {
         return new Promise((resolve, reject) => {
             let timeData = new Date();
             const tableQuery = {
-                // give the query a unique name
                 name: 'fetch-user',
                 text: 'INSERT INTO transaction(transaction_type,sender_id,reciever_id,amount,transacted_at,status,reciever_name)VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING sender_id,reciever_id,amount',
                 values: [1, obj.customer_id, obj.customer_id, obj.wallet_amount, timeData, 1, obj.reciever_name]
@@ -97,17 +92,13 @@ let CustomerService = {
         });
     },
     addMoney(sender_id, amount, limit) {
-        console.log("yotaaa", sender_id, typeof (amount), limit)
         return new Promise((resolve, reject) => {
 
             const tableQuery = {
-                // give the query a unique name
-
                 text: 'UPDATE wallet SET wallet_amount =wallet_amount+ $1, todays_wallet_limit=$3 +todays_wallet_limit WHERE customer_id = $2 RETURNING wallet_amount,send_limit,todays_wallet_limit',
                 values: [amount, sender_id, limit]
             }
             connection.query(tableQuery, (err, res) => {
-                console.log("wakllet", res)
                 if (err)
                     reject(err);
                 else
@@ -119,7 +110,6 @@ let CustomerService = {
     getRecieverId(obj) {
         return new Promise((resolve, reject) => {
             const tableQuery = {
-                // give the query a unique name
                 name: 'fetch-user',
                 text: 'SELECT customer_id,customer_name FROM customer WHERE customer_phone_no=$1 OR customer_email= $1',
                 values: [obj.reciever]
@@ -137,11 +127,9 @@ let CustomerService = {
         });
     },
     sendMoney(reciever_id, sender_name, amount, sender_id, name) {
-        // console.log("asassa",reciever_id,sender_name,amount,sender_id,name)
         return new Promise((resolve, reject) => {
             let timeData = new Date();
             const tableQuery = {
-                // give the query a unique name
                 name: 'insert-into-transaction',
                 text: 'INSERT INTO public.transaction(transaction_type,sender_id,sender_name,reciever_id,amount,transacted_at,status,reciever_name) VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',
                 values: [2, sender_id, sender_name, reciever_id, amount, timeData, 1, name]
@@ -159,15 +147,12 @@ let CustomerService = {
     },
     updateWallet(sender_id, amount) {
         return new Promise((resolve, reject) => {
-            // console.log("sasas",sender_id,amount)
             const tableQuery = {
-                // give the query a unique name
                 name: 'wallet update for sender',
                 text: 'UPDATE wallet SET wallet_amount = wallet_amount - $1,send_limit=$1 + send_limit   WHERE customer_id = $2 RETURNING *',
                 values: [amount, sender_id]
             }
             connection.query(tableQuery, (err, res) => {
-                // console.log("update",err,res)
                 if (err)
                     reject(err);
                 else
@@ -180,13 +165,11 @@ let CustomerService = {
     updateReciverWallet(reciever_id, amount) {
         return new Promise((resolve, reject) => {
             const tableQuery = {
-                // give the query a unique name
                 name: 'wallet update for sender',
                 text: 'UPDATE wallet SET wallet_amount = wallet_amount + $1 WHERE customer_id = $2 RETURNING *',
                 values: [amount, reciever_id]
             }
             connection.query(tableQuery, (err, res) => {
-                console.log("update", err, res)
 
                 if (err)
                     reject(err);
@@ -202,7 +185,6 @@ let CustomerService = {
             let timeData = new Date();
 
             const tableQuery = {
-                // give the query a unique name
                 name: 'fetch-user-id',
                 text: 'SELECT customer_id,customer_name from customer WHERE customer_email=$1 OR customer_phone_no=$1',
                 values: [user.requested_from]
@@ -217,13 +199,10 @@ let CustomerService = {
         });
     },
     saveTransRequest(data, sender_id, reciever_name, amount, name) {
-        console.log("dataaaaa", data, sender_id, amount, name, reciever_name);
         return new Promise((resolve, reject) => {
             let timeData = new Date();
 
             const tableQuery = {
-                // give the query a unique name
-                //  text:"SELECT * FROM transaction",
                 name: 'request-save',
                 text: 'INSERT INTO public.transaction(transaction_type,sender_id,reciever_id,amount,transacted_at,status,reciever_name,sender_name)VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *',
                 values: [2, sender_id, data.customer_id, amount, timeData, 3, reciever_name, name]
@@ -243,8 +222,6 @@ let CustomerService = {
             let timeData = new Date();
 
             const tableQuery = {
-                // give the query a unique name
-                //  text:"SELECT * FROM transaction",
                 name: 'request-save',
                 text: 'SELECT transaction_id,transaction_type,sender_id,reciever_id,amount,transacted_at,status,reciever_name FROM transaction WHERE status=$1 AND reciever_id=$2',
                 values: [3, data]
@@ -262,10 +239,7 @@ let CustomerService = {
     getUserDetails(data) {
         return new Promise((resolve, reject) => {
             let timeData = new Date();
-
             const tableQuery = {
-                // give the query a unique name
-                //  text:"SELECT * FROM transaction",
                 name: 'request-customer-details-for-request',
                 text: 'SELECT customer_name,customer_phone_no,customer_email FROM customer WHERE customer_id=$1',
                 values: [data]
@@ -280,7 +254,7 @@ let CustomerService = {
             });
         });
     },
-    getBalance(data) { //get customer balance also used for checking while sending data of the reciever
+    getBalance(data) { 
         return new Promise((resolve, reject) => {
 
             const tableQuery = {
@@ -317,7 +291,6 @@ let CustomerService = {
             });
         } else {
             return new Promise((resolve, reject) => {
-                console.log("dataaaa", data, check)
                 const tableQuery = {
                     name: 'check-send-limit',
                     text: 'SELECT send_limit FROM wallet WHERE customer_id=$1 ',

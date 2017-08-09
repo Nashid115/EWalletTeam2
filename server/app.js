@@ -12,21 +12,10 @@ let app = express();
 
 let Customer = require('./models/customer');
 
-//connect to mongodb
 mongoose.connect('mongodb://localhost/ewallet', { useMongoClient: true });
 var db = mongoose.connection;
 var postdb=pg.connect;
-//on connection
-// db.on('connected', () => {
-// 	console.log("connected to mongodb @8080");
-// });
 
-// //on error
-// db.on('error', (err) => {
-// 	if (err) {
-// 		console.log("error in connection", +err);
-// 	}
-// });
 
 app.set('port', process.env.PORT || 8080);
 app.use(cors());

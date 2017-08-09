@@ -1,5 +1,4 @@
 import CustomerService from './customer.service.js';
-// import WalletService from '../wallet/wallet.service.js';
 let CustomerController = {
     getCustomerData(req, res, next) {
         CustomerService.getCustomer()
@@ -57,12 +56,10 @@ let CustomerController = {
 
                 CustomerService.transaction(req.body)
                     .then(resp => {
-                        console.log("wallet", resp[0])
                         wallet_data = resp;
                         return CustomerService.addMoney(resp[0].sender_id, resp[0].amount, resp[0].amount)
 
                     }).then(wallet => {
-                        console.log("wallet", wallet);
                         res.status(200);
                         res.send(wallet)
                     })
@@ -114,12 +111,10 @@ let CustomerController = {
                                     var updateReciever = CustomerService.updateReciverWallet(transactionData.reciever_id, transactionData.amount);
                                     Promise.all([updateSender, updateReciever])
                                         .then(values => {
-                                            console.log(values, "--"); // [3, 1337, "foo"] 
                                             res.status(201);
                                             res.send(values[0]);
                                         })
                                         .catch((err) => {
-                                            console.log(err, "--")
                                             if (err) {
                                                 res.status(400);
                                                 res.send("amount cannot be sent as the reciever has exceeded his wallet amount ");
@@ -187,7 +182,6 @@ let CustomerController = {
     },
     sendLimit(req, res, next) {
         CustomerService.sendTransactionLimit(req.params.id, ).then(resp => {
-            console.log("resp", resp)
             res.status(200);
             res.send(resp);
         }).catch(err => {
