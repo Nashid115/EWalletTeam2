@@ -29,23 +29,15 @@ export class TransactionComponent implements OnInit {
 
   reverse(data) {
     this.History = data.reverse();
-    //console.log(this.History);
     for(let i =0; i<this.History.length;i++){
       if(this.History[i].status !== 3){
         this.len++;
       }
     }
-    // this.len = this.History.length;
     if(this.len===0){
       this.show = false;
     }
-    console.log(this.len);
   }
-
-  filter(type){
-    console.log(type);
-  }
-
 
   ngOnInit() {
     this.customer_id = this.customerIdService.getUser();

@@ -67,7 +67,6 @@ export class AddMoneyComponent implements OnInit {
   }
 
   showDailyLimit(err) {
-    console.log(err);
     if(err.limit === 10000){
       this.hideLimit = false;
       setTimeout(() => this.hideLimit = true , 3000);

@@ -43,7 +43,7 @@ public requestForm = this.fb.group({
       amount : val.amount,
       customer_name : this.cust_name
     }
-    //console.log(obj.customer_name);
+
     if(this.custEmail === obj.requested_from || this.custPhone === obj.requested_from){
       this.showSelf = false;
       setTimeout(() => this.showSelf = true , 3000);
@@ -55,9 +55,7 @@ public requestForm = this.fb.group({
   requestMoney(value){
     this.requestService.postRequestData(value)
     .subscribe(data => {
-      console.log(data, "in cmp");
       if (data.sender_id){
-        console.log(data.sender_id);
         this.valid = false;
         setTimeout(() => this.valid = true , 3000);
       }

@@ -52,7 +52,6 @@ checkCondition(sendmoneydata){
       setTimeout(() => this.showSelf = true , 3000);
     } else {
       this.showSelf = true;
-      console.log(obj);
       this.postFunction(obj);
     }
   }
@@ -73,13 +72,11 @@ postFunction(obj) {
       this.wAmount(data);  
     },
   error =>{
-   console.log(error.json());
    this.handleError(error);
   });
 }
 
 wAmount(data) {
-  console.log(data,"send data");
     if(data.error){
       this.show = false;
       setTimeout(() => this.show = true , 3000);
@@ -93,7 +90,6 @@ wAmount(data) {
     }
 }
 handleError(error){
-  console.log(error.json(), "error recieve");
   if(error.json().error){
     this.show = false;
   } else if(error.status === 400 && error.json().send_limit === 10000){
@@ -107,7 +103,6 @@ handleError(error){
 
 ngOnInit() {
   this.Balance = this.customerIdService.getBalance();
-  console.log(this.Balance, "in component")
   this.custName = this.customerIdService.getUserName();
   this.custEmail = this.customerIdService.getEmail();
   this.custPhone = this.customerIdService.getPhone();

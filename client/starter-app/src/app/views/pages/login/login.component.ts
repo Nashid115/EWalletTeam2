@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
   Login(form) {
     this.loginService.postLoginData(form._value)
     .subscribe(data => {
-      console.log(data,"login data")
       this.checkUserValid(data);
-      console.log(data,"login")
       },
       error => {
         this.handleError(error);

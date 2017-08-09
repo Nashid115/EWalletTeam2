@@ -51,7 +51,6 @@ export class SideBarComponent implements OnInit {
       }
 
   callBalance() {
-    console.log(this.customer_id);
     this.walletService.fetchBalance(this.customer_id)
       .subscribe(data => this.setBalance(data)
     );
