@@ -18,6 +18,7 @@
         <div [hidden]="greateramount" class="alert alert-danger">Do not have sufficient amount in wallet to make transaction</div>
         <div [hidden]="show" class="alert alert-danger">Oops! He will be too rich!! Try sending lesser amount.</div>
         <div [hidden]="showSelf" class="alert alert-danger">Oops! Cant send to self, try ADD MONEY!</div>
+        <div [hidden]="hideLimit" class="alert alert-danger">Sorry! Daily send limit reached!</div>
         <br>
         <input [disabled]=sendForm.invalid type="submit" name="send" class="sendButton" value="SEND">
       </form>

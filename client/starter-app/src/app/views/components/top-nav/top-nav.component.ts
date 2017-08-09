@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerIdService } from '../../../customer-id.service';
 import { HistoryService } from '../../pages/e-wallet/transaction/history.service';
 import { TransactionComponent } from '../../pages/e-wallet/transaction/transaction.component';
+import { NotificationService } from './notification.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -18,26 +19,21 @@ export class TopNavComponent implements OnInit {
 
   constructor(
     private customerIdService: CustomerIdService,
-    private historyService: HistoryService) { }
+    private historyService: HistoryService,
+    private notificationService: NotificationService) { }
   
   logout(){
     this.customerIdService.clearUser();
   }
 
-  loadTransaction() {
-      this.historyService.getTransactions(this.customer_id)
-        .then(data => this.reverse(data.senderTrans));
+  loadNotification() {
+      this.notificationService.getNotification(this.customer_id)
+        .then(data => this.reverse(data.notification));
     }
 
   reverse(data) {
     this.history = data.reverse();
     this.length= this.history.length;
-    for(let i=0;i<this.length;i++) {
-      if(data[i].status===3 && this.userName === data[i].sender_name) {
-        this.requestLength++;
-        console.log(data[i].status, data[i].sender_name);
-      }
-    }
   }
 
   ngOnInit() {
@@ -45,7 +41,7 @@ export class TopNavComponent implements OnInit {
     this.userName = this.customerIdService.getUserName();
     this.balance = this.customerIdService.getBalance();
     this.customer_id = this.customerIdService.getUser();
-    this.loadTransaction();
+    this.loadNotification();
   }
 
 }

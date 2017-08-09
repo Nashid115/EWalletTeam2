@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class AddMoneyComponent implements OnInit {
 
   public addForm = this.fb.group({
-  wallet_amount: ["", Validators.required ]
+  wallet_amount: ["",[Validators.required, Validators.min(0), Validators.max(10000)]]
   });
 
   valid = true;

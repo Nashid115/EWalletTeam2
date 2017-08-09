@@ -29,6 +29,7 @@ import { CustomerIdService} from './customer-id.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { WalletService } from './views/components/side-bar/wallet.service';
 import { ProgressbarModule } from 'ngx-bootstrap';
+import { NotificationService } from './views/components/top-nav/notification.service';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ProgressbarModule } from 'ngx-bootstrap';
     SendMoneyService,
     CustomerIdService,
     WalletService,
+    NotificationService
   ],
  bootstrap: [AppComponent]
 })

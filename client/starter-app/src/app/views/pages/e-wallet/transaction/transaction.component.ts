@@ -14,7 +14,7 @@ export class TransactionComponent implements OnInit {
   customer_id = null;
   customer_name = "";
   show=true;
-  len = null;
+  len = 0;
   p: number = 1;
 
   constructor(
@@ -30,7 +30,12 @@ export class TransactionComponent implements OnInit {
   reverse(data) {
     this.History = data.reverse();
     //console.log(this.History);
-    this.len = this.History.length;
+    for(let i =0; i<this.History.length;i++){
+      if(this.History[i].status !== 3){
+        this.len++;
+      }
+    }
+    // this.len = this.History.length;
     if(this.len===0){
       this.show = false;
     }

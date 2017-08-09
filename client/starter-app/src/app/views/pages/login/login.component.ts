@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     private balanceService: BalanceService) { }
   
   checkIsSuccess(){
-    if(this.customerIdService.isSuccess()){
+     if(this.customerIdService.isSuccess()){
       this.show = true;
     }
   }
