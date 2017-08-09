@@ -97,7 +97,7 @@ let CustomerService = {
         });
     },
     addMoney(sender_id, amount, limit) {
-        console.log("yotaaa",sender_id, typeof(amount), limit)
+        console.log("yotaaa", sender_id, typeof (amount), limit)
         return new Promise((resolve, reject) => {
 
             const tableQuery = {

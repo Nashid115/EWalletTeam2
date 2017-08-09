@@ -66,8 +66,8 @@ let CustomerController = {
                         res.status(200);
                         res.send(wallet)
                     })
-                    .catch(err=>{
-                        if(err){
+                    .catch(err => {
+                        if (err) {
                             res.status(400)
                             res.send(err);
                         }
@@ -153,11 +153,11 @@ let CustomerController = {
 
             .then(resp => {
                 notification = resp;
-                 CustomerService.getUserDetails(resp.reciever_id)
-                .then(data => {
-                notification.userData = data;
-                res.send({notification});
-            })
+                CustomerService.getUserDetails(resp.reciever_id)
+                    .then(data => {
+                        notification.userData = data;
+                        res.send({ notification });
+                    })
             })
 
             .catch(next);
