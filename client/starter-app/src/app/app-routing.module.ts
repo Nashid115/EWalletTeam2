@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import {ModuleWithProviders} from '@angular/core'
+import { ModuleWithProviders } from '@angular/core'
 import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from './app.component';
+import { AppComponent } from './app.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 import { TopNavComponent } from './views/components/top-nav/top-nav.component'

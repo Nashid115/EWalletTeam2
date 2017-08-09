@@ -4,7 +4,7 @@
 
         <form [formGroup]="loginForm" (ngSubmit)="Login(loginForm)" class="form-signin">
 
-
+            <div [hidden]="!show" class="alert alert-success  ">Successfully Registered, Please Login.</div>
             <input type="text" id="inputEmailphone" formControlName="customer_detail" class="form-control" placeholder="Email address/Phone no." required>
             <div *ngIf="loginForm.controls.customer_detail.invalid&&loginForm.controls.customer_detail.dirty" class="alert alert-danger">Please enter a valid email or phone number!</div>
             <br>
@@ -13,10 +13,10 @@
             <br>
 
             <button [disabled]=loginForm.invalid class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Login</button>
-            <div [hidden]="validity" class="alert alert-danger">Not a valid user? Please register.</div>
+            <div [hidden]="validity" class="alert alert-danger">Email and Password do not match.</div>
             <br>
 
-            <p class="new">new user? <a routerLink="/register"><U>create new account</U></a></p>
+            <p class="new">New user? <a routerLink="/register"><U>Create new account</U></a></p>
 
         </form>
 

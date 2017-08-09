@@ -26,6 +26,11 @@ import { RegisterService } from './views/pages/register/register.service';
 import { LoginService } from './views/pages/login/login.service';
 import { SendMoneyService } from './views/pages/send-money/send-money.service';
 import { CustomerIdService} from './customer-id.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { WalletService } from './views/components/side-bar/wallet.service';
+import { ProgressbarModule } from 'ngx-bootstrap';
+import { NotificationService } from './views/components/top-nav/notification.service';
+
 
 @NgModule({
   declarations: [
@@ -43,13 +48,16 @@ import { CustomerIdService} from './customer-id.service';
     NavTabsComponent,
     SideBarComponent,
     DashboardComponent
+ 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    ProgressbarModule.forRoot()
   ],
   providers: [
     HistoryService,
@@ -59,7 +67,9 @@ import { CustomerIdService} from './customer-id.service';
     AddMoneyService,
     BalanceService,
     SendMoneyService,
-    CustomerIdService
+    CustomerIdService,
+    WalletService,
+    NotificationService
   ],
  bootstrap: [AppComponent]
 })

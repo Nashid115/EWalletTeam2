@@ -2,12 +2,54 @@
 
 
     <div class="row align-img">
-        <img src="assets/download.jpg" width="170" height="170" class="moneybag-image">
+        <img src="assets/images.jpg" width="170" height="170" class="moneybag-image">
     </div>
-
+    <br>
     <div class="row">
 
-        <p class="balance align-img">Balance : {{balance}}</p>
+        <p class="balance align-img">Balance : <span class="fa fa-rupee"> {{balance}} </span></p>
+
+        <br><br>
+        <button class="reload" (click)="callBalance();getAddBalanceData();getSendBalanceDaily()"> Update </button>
     </div>
+    <br>
+    <div class="row">
+        <p class="ewallet-limit"><b>Ewallet limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{percentage}} type="danger"><span class="progBar">{{balance}} / 25000</span></progressbar>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <p class="ewallet-limit"><b>Daily Add limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{addpercentage}} type="danger"><span class="progBar">{{addLimit}}/10000</span></progressbar>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <p class="ewallet-limit"><b>Daily Send limit </b></p>
+        <div class="col-sm-12">
+            <progressbar class="progress-striped" value={{sendpercentage}} type="danger"><span class="progBar">{{sendLimit}} / 10000</span></progressbar>
+        </div>
+    </div>
+    <div class="row">
+
+        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Send Money Limit : 10,000 Rs</p>
+        <p class="limit align-img"> <i class="fa fa-rupee" style="font-size:16px; margin-top:5px"></i> Daily Add Money Limit : 10,000 Rs</p>
+        <p class="limit align-img"> <i class="fa fa-google-wallet" style="font-size:16px; margin-top:5px"></i> Wallet Limit : 25,000 Rs</p>
+
+    </div>
+    <br>
+    <br>
+    <div>
+        <p class="profile-info">Profile Info
+        </p>
+        <!-- <p class="profile">User Name : {{customer_name}}</p> -->
+        <p class="profile"> email : {{customer_email}}</p>
+        <p class="profile"> phone : {{customer_phone_no}}</p>
+    </div>
+
+
 
 </div>

@@ -14,10 +14,14 @@ import { CustomerIdService } from '../../../customer-id.service';
 export class RequestMoneyComponent implements OnInit {
 private val: any;
 valid = true;
+private cust_name = "";
+custEmail = "";
+custPhone = "";
+showSelf = true;
 
 public requestForm = this.fb.group({
-    requested_from: ['',[ Validators.required, Validators.pattern("(^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)|\\d{10}")]],
-    amount: ['',[ Validators.required, Validators.pattern("^(\\d{1,})$")]]
+    requested_from: ['',[ Validators.required, Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$|^[789]\\d{9}$")]],
+    amount: ["",[Validators.required, Validators.min(0), Validators.max(10000)]]
   });
 
   constructor(
@@ -36,9 +40,16 @@ public requestForm = this.fb.group({
     let obj= {
       customer_id : this.customer_id,
       requested_from : val.requested_from,
-      amount : val.amount
+      amount : val.amount,
+      customer_name : this.cust_name
     }
-    this.requestMoney(obj);
+
+    if(this.custEmail === obj.requested_from || this.custPhone === obj.requested_from){
+      this.showSelf = false;
+      setTimeout(() => this.showSelf = true , 3000);
+    } else {
+      this.requestMoney(obj);
+    }
   }
 
   requestMoney(value){
@@ -46,6 +57,7 @@ public requestForm = this.fb.group({
     .subscribe(data => {
       if (data.sender_id){
         this.valid = false;
+        setTimeout(() => this.valid = true , 3000);
       }
       else {
         this.valid = true;
@@ -55,6 +67,10 @@ public requestForm = this.fb.group({
 
 
 ngOnInit() {
+  this.cust_name = this.customerIdService.getUserName();
+  this.custEmail = this.customerIdService.getEmail();
+  this.custPhone = this.customerIdService.getPhone();
+  this.customer_id = this.customerIdService.getUser();
   }
 
 }

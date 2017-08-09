@@ -15,13 +15,15 @@ import { Subscription } from 'rxjs/Subscription';
 export class AddMoneyComponent implements OnInit {
 
   public addForm = this.fb.group({
-     wallet_amount: ["",[ Validators.required, Validators.pattern("^(?:10000)$|^([1-9])$|^([1-9][0-9])$|^([1-9][0-9][0-9])$|^([1-9][0-9][0-9][0-9])$")]]
+  wallet_amount: ["",[Validators.required, Validators.min(0), Validators.max(10000)]]
   });
 
   valid = true;
   show = true;
   balance = null;
   subscription : Subscription;
+  customer_id = "";
+  hideLimit = true;
 
   constructor(
     public router: Router,
@@ -31,11 +33,12 @@ export class AddMoneyComponent implements OnInit {
     public customerIdService: CustomerIdService
     ) { this.subscription = this.balanceService.getBalance().subscribe(balance => this.balance = balance); }
 
-  customer_id = this.customerIdService.getUser();
+  
 
   add(form) {
     if((form._value.wallet_amount + this.balance) > 25000) {
       this.valid = false;
+      setTimeout(() => this.valid = true , 3000);
       this.show = true;
     } else {
       this.valid = true;
@@ -55,11 +58,27 @@ export class AddMoneyComponent implements OnInit {
     this.addMoneyService.addBalance(value)
     .subscribe(data => {
       this.balanceService.updateBalance(data.wallet_amount);
+      this.balanceService.updateAddLimit(data.todays_wallet_limit);
       this.show = false;
-    });
+      setTimeout(() => this.show = true , 3000);
+    },
+
+    err => this.showDailyLimit(err.json()));
   }
 
+  showDailyLimit(err) {
+    if(err.limit === 10000){
+      this.hideLimit = false;
+      setTimeout(() => this.hideLimit = true , 3000);
+    }
+  }
+
+
+  
+
 ngOnInit() {
+  this.balance = this.customerIdService.getBalance();
+  this.customer_id = this.customerIdService.getUser();
   }
 
 }

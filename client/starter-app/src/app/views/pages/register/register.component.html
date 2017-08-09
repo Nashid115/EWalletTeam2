@@ -1,37 +1,28 @@
 <div class="container">
-    <div class="card card-container">
-        <img id="profile-img" class="profile-img-card" src="assets/icon.png" />
-
-        <p id="profile-name" class="profile-name-card"></p>
-        <form [formGroup]="registerForm" (ngSubmit)="postFunction(registerPostData)" class="form-register">
-            <input type="text" id="inputName" class="form-control" formControlName="name" placeholder="First Name" [(ngModel)]="registerPostData.customer_name" required>
-            <div *ngIf="registerForm.controls.name.invalid&&registerForm.controls.name.dirty" class="alert alert-danger">Please enter a name!</div>
-            <br>
-            <input type="email" id="inputEmail" class="form-control" formControlName="email" placeholder="Email address" [(ngModel)]="registerPostData.customer_email" required email>
-            <div *ngIf="registerForm.controls.email.invalid&&registerForm.controls.email.dirty" class="alert alert-danger">Please enter a valid email!</div>
-            <br>
-
-            <input type="text" id="inputPhone" class="form-control" formControlName="phone" placeholder="Phone Number" [(ngModel)]="registerPostData.customer_phone_no" required>
-            <div *ngIf="registerForm.controls.phone.invalid&&registerForm.controls.phone.dirty" class="alert alert-danger">Please enter a 10 digit phone number!</div>
-            <br>
-
-            <input type="password" id="inputPassword" class="form-control" formControlName="password" placeholder="Password" [(ngModel)]="registerPostData.customer_password" required password>
-            <div *ngIf="registerForm.controls.password.invalid&&registerForm.controls.password.dirty" class="alert alert-danger">Password should have atleast 1 Uppercase, 1 lowercase, 1 digit, 1 special character and should have min. length of 8! </div>
-            <br>
-
-
-            <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password> {{confirmPassword123}}
-            <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors?.MatchPassword">Password not match</div>
-            <br>
-
-            <button [disabled]=registerForm.invalid class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button><br>
-             <div [hidden]="valid" class="alert alert-danger">Email OR phone number already exist please enter a new one.</div>
-             <div [hidden]="show" class="alert alert-danger">Oops!! Something went wrong!</div> 
-            <p class="login">Already registered? <a routerLink="/"><U>Login</U></a></p>
-        </form>
-        <!-- /form -->
-
-    </div>
-    <!--/card-container  -->
+  <div class="card card-container">
+    <img id="profile-img" class="profile-img-card" src="assets/icon.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form [formGroup]="registerForm" (ngSubmit)="postFunction(registerPostData)" class="form-register">
+      <input type="text" id="inputName" class="form-control" formControlName="name" placeholder="First Name" [(ngModel)]="registerPostData.customer_name" required>
+      <div *ngIf="registerForm.controls.name.invalid&&registerForm.controls.name.dirty" class="alert alert-danger">Please enter a name!</div>
+      <br>
+      <input type="email" id="inputEmail" class="form-control" formControlName="email" placeholder="Email address" [(ngModel)]="registerPostData.customer_email" required email>
+      <div *ngIf="registerForm.controls.email.invalid&&registerForm.controls.email.dirty" class="alert alert-danger">Please enter a valid email!</div>
+      <br>
+      <input type="text" id="inputPhone" class="form-control" formControlName="phone" placeholder="Phone Number" [(ngModel)]="registerPostData.customer_phone_no" required>
+      <div *ngIf="registerForm.controls.phone.invalid&&registerForm.controls.phone.dirty" class="alert alert-danger">Please enter a 10 digit phone number!</div>
+      <br>
+      <input type="password" id="inputPassword" class="form-control" formControlName="password" placeholder="Password" [(ngModel)]="registerPostData.customer_password" required password>
+      <div *ngIf="registerForm.controls.password.invalid&&registerForm.controls.password.dirty" class="alert alert-danger">Password should have atleast 1 Uppercase, 1 lowercase, 1 digit, 1 special character and should have min. length of 8! </div>
+      <br>
+      <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder=" Confirm Password" [(ngModel)]="confirmPassword" required password>
+      <div class="alert alert-danger" *ngIf="registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.dirty">Password did not match</div>
+      <br>
+      <button [disabled]=registerForm.invalid class="btn btn-lg btn-primary btn-block btn-register" type="submit">Register</button>
+      <br>
+      <div [hidden]="valid" class="alert alert-danger">Email OR phone number already exist please enter a new one.</div>
+      <div [hidden]="show" class="alert alert-danger">Oops!! Something went wrong!</div>
+      <p class="login">Already registered? <a routerLink="/"><U>Login</U></a></p>
+    </form>
+  </div>
 </div>
-<!-- /container -->
