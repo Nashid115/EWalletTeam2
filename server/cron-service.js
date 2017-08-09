@@ -8,7 +8,7 @@ var jobToMakeWalletLimtToDefault = function(expression){
     var CronJob = Cron.CronJob;
     new CronJob(expression, function() {
     const tableQuery={
-        text:'UPDATE wallet SET todays_wallet_limit =$1 AND send_limit=$1',
+        text:'UPDATE wallet SET todays_wallet_limit =$1,send_limit=$1',
         values:[0]
     }
    connection.query(tableQuery, (err, res) => {
@@ -19,9 +19,7 @@ var jobToMakeWalletLimtToDefault = function(expression){
                 }
 
             });
-  },
-        
-        
+  },     
         
   null,
   true

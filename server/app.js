@@ -33,7 +33,7 @@ app.use(cors());
 
 app.use(express.static('./client/starter-app/dist'));
 
-let expression='0 0 0 * *';
+let expression='0 0 * * *';
 jobToMakeWalletLimtToDefault(expression);
 
 

@@ -18,7 +18,7 @@ router.post('/send',CustomerController.sendMoneyData); //send money
 router.post('/request',CustomerController.requestMoneyData); //request money
 router.get('/notification/:id',CustomerController.notification);//get notification
 router.get('/balance/:id',CustomerController.balance);//get balance
-router.get('/DailyAddTransactionLimit/:id',CustomerController.addLimit);//daily limit
-router.get('/DailySendTransaction/:id',CustomerController.sendLimit);//daily send limit
+// router.get('/DailyAddTransactionLimit/:id',CustomerController.addLimit);//daily limit
+// router.get('/DailySendTransaction/:id',CustomerController.sendLimit);//daily send limit
 
 export default router;
